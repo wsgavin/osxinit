@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Future enhancements:
+# - Pass name & email as arguments
+
 # brew installation
 
 brew install git
