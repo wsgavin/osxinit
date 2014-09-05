@@ -14,3 +14,5 @@ git config --global core.editor vim
 git config --global merge.tool vimdiff
 git config --global color.ui auto
 git config --global push.default simple
+
+exit 0

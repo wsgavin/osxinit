@@ -80,3 +80,5 @@ npm install -g generator-angular-fullstack
 # Cleanup
 sudo chown -R warren:wheel /usr/local
 npm cache clean
+
+exit 0
