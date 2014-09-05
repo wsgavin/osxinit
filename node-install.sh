@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Install script for nodejs.
+#
+# Modified from https://gist.github.com/nicerobot/2697848
+
 (( ${#} > 0 )) || {
   echo 'DISCLAIMER: USE THIS SCRIPT AT YOUR OWN RISK!'
   echo 'THE AUTHOR TAKES NO RESPONSIBILITY FOR THE RESULTS OF THIS SCRIPT.'

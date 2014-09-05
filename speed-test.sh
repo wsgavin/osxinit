@@ -1,7 +1,16 @@
 #!/bin/sh
 
+# Small script to test the speed of your internet connection.
+#
+# Future enhancements:
+# - Add command line options for:
+#   - log file
+#   - size of download
+
 # Header details for log file, not in use at the momoent.
-#echo date,time_connect,time_namelookup,time_pretransfer,time_redirect,time_starttransfer,time_total,speed_download,size_download,url_effective
+#
+# date,time_connect,time_namelookup,time_pretransfer,time_redirect,time_starttransfer,time_total,speed_download,size_download,url_effective
+#
 
 LOGFILE="speed-test.log"
 

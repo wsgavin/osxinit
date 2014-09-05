@@ -1,3 +1,11 @@
+#!/bin/sh
+
+# brew installation
+
+brew install git
+
+# The following is my personal settings for git.
+
 git config --global user.name "Warren Gavin"
 git config --global user.email "warren@dubelyoo.com"
 git config --global core.autocrlf input
