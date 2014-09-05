@@ -47,6 +47,9 @@ curl -O  http://nodejs.org/dist/latest/$latest
 # Install nodejs
 sudo installer -pkg $latest -target /
 
+# Remove install file.
+rm $latest
+
 # From time to time I run into permisions that seem to be impacted by the
 # installation. This is not the first time  you will see this.
 sudo chown -R warren:wheel /usr/local
@@ -70,12 +73,20 @@ echo npm `npm --version`
 
 # Install angularjs
 npm cache clean
+
+echo Installing yeoman
 npm install -g yo
 
 
 # Install generator-angular-fullstack
 npm cache clean
+echo Installing generator-angular-fullstack
 npm install -g generator-angular-fullstack
+
+# Install firebase-tools
+npm cache clean
+echo Installing firebase-tools
+npm install -g firebase-tools 
 
 # Cleanup
 sudo chown -R warren:wheel /usr/local
