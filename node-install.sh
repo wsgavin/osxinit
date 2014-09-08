@@ -34,6 +34,7 @@ done
 rm -rf /usr/local/lib/node \
   /usr/local/lib/node_modules \
   /var/db/receipts/org.nodejs.* \
+  ${HOME}/.node-gyp \
   ${HOME}/.npm
 
 # Determine the latest version of nodejs.
@@ -62,30 +63,35 @@ echo npm `npm --version`
 #
 # Updating npm (not modules)
 # Updating npm seems to cause issues, so I've left this out for now.
-#npm update npm -g
-#npm cache clean
-#
+# npm cache clean
+# npm update npm -g
+# sudo chown -R warren:wheel /usr/local
+
 # Update npm global modules installed
 # Run into issues where there are errors if the cache is not cleaned.
-#npm cache clean
-#npm update -g
-#sudo chown -R warren:wheel /usr/local
+# npm cache clean
+# npm update -g
+# sudo chown -R warren:wheel /usr/local
 
 # Install angularjs
 npm cache clean
-
+echo
 echo Installing yeoman
+echo
 npm install -g yo
 
-
-# Install generator-angular-fullstack
+# Install generator-angularfire
 npm cache clean
-echo Installing generator-angular-fullstack
-npm install -g generator-angular-fullstack
+echo
+echo Installing generator-angularfire
+echo
+npm install -g generator-angularfire
 
 # Install firebase-tools
 npm cache clean
+echo
 echo Installing firebase-tools
+echo
 npm install -g firebase-tools 
 
 # Cleanup
