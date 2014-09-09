@@ -53,7 +53,7 @@ rm $latest
 
 # From time to time I run into permisions that seem to be impacted by the
 # installation. This is not the first time  you will see this.
-sudo chown -R warren:wheel /usr/local
+sudo chown -R $SUDO_USER:wheel /usr/local
 echo node `node --version`
 echo npm `npm --version`
 
@@ -65,13 +65,13 @@ echo npm `npm --version`
 # Updating npm seems to cause issues, so I've left this out for now.
 # npm cache clean
 # npm update npm -g
-# sudo chown -R warren:wheel /usr/local
+# sudo chown -R $SUDO_USER:wheel /usr/local
 
 # Update npm global modules installed
 # Run into issues where there are errors if the cache is not cleaned.
 # npm cache clean
 # npm update -g
-# sudo chown -R warren:wheel /usr/local
+# sudo chown -R $SUDO_USER:wheel /usr/local
 
 # Install angularjs
 npm cache clean
@@ -92,10 +92,10 @@ npm cache clean
 echo
 echo Installing firebase-tools
 echo
-npm install -g firebase-tools 
+npm install -g firebase-tools
 
 # Cleanup
-sudo chown -R warren:wheel /usr/local
+sudo chown -R $SUDO_USER:wheel /usr/local
 npm cache clean
 
 exit 0
