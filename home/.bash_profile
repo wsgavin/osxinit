@@ -7,7 +7,8 @@
 #done
 #unset file
 
-for DOTFILE in `find $HOME/.dotfiles -type f`
+#for DOTFILE in `find $HOME/.dotfiles -type f`
+for DOTFILE in ~/.dotfiles/.{path,bash_prompt,exports,aliases,functions,extra};
 do
   [ -f "${DOTFILE}" ] && source "${DOTFILE}"
 done
