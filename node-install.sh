@@ -19,16 +19,16 @@ curl https://raw.githubusercontent.com/creationix/nvm/v0.23.3/install.sh | bash
 
 BASH_STR="\n[[ -r \$NVM_DIR/bash_completion ]] && . \$NVM_DIR/bash_completion"
 
-if ! grep -qc 'NVM_DIR/bash_completion' $PROFILE; then
-  echo "=> Appending bash completion string to $PROFILE"
-  printf "$BASH_STR\n" >> "$PROFILE"
-else
-  echo "=> Source string already in $NVM_PROFILE"
-fi
+#if ! grep -qc 'NVM_DIR/bash_completion' $PROFILE; then
+#  echo "=> Appending bash completion string to $PROFILE"
+#  printf "$BASH_STR\n" >> "$PROFILE"
+#else
+#  echo "=> Source string already in $NVM_PROFILE"
+#fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+#[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Install latest node
 echo

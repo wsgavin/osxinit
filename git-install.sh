@@ -3,10 +3,6 @@
 # Future enhancements:
 # - Pass name & email as arguments
 
-# brew installation
-
-brew install git
-
 # The following is my personal settings for git.
 
 git config --global user.name "Warren Gavin"

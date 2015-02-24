@@ -1,3 +1,7 @@
+
+# Install git
+brew 'git'
+
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew 'coreutils'
@@ -11,10 +15,11 @@ brew 'wget'
 brew 'vim', args: ['override-system-vi']
 
 tap 'homebrew/dupes'
-brew 'homebrew/dupes/grep'
+brew 'homebrew/dupes/grep', args: ['with-default-names']
 
 # Install other useful binaries
 brew 'ack'
 brew 'ffmpeg'
+
 tap 'phinze/cask'
 brew 'brew-cask'
