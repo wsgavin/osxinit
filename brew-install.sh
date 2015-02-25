@@ -34,6 +34,10 @@ brew cask install makemkv
 brew cask install spotify
 brew cask install the-unarchiver
 brew cask install google-chrome
+#brew cask install parallels-desktop
+#brew cask install mailbox
+#brew cask install cleanmymac
+#brew cask install snagit
 
 brew cleanup
 
