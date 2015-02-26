@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # Initialze home directory with dotfiles.
 # DO SOMETHING HERE...
 
