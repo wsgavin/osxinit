@@ -9,7 +9,8 @@ if exists("&undodir")
 endif
 
 " Enable line numbers
-set number
+" set number
+set nonumber
 
 " Enable syntax highlighting
 syntax on
