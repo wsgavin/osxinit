@@ -31,6 +31,6 @@ Let's checkout the git repository, cd into osxinit and run `initialize.sh`.
 
 ```bash
 $ git clone https://github.com/wsgavin/osxinit.git
-cd osxinit
-./initilize.sh
+$ cd osxinit
+$ ./initilize.sh
 ```
