@@ -13,13 +13,13 @@ To run these scripts the OS X box will need to need to meet a few requirements.
 
 I've created a script to test for these requirements. And yes, if you can run this you should already have an Internet connection.
 
-```sh
+```bash
 $ curl -s https://raw.githubusercontent.com/wsgavin/osxinit/master/check.sh | sh
 ```
 
 If an OS X fresh install you will probably have to do the following.
 
-```sh
+```bash
 $ xcode-select --install
 ```
 
@@ -29,7 +29,7 @@ Once complete the `check.sh` script should tell you it's all good to go.
 
 Let's checkout the git repository, cd into osxinit and run `initialize.sh`.
 
-```sh
+```bash
 $ git clone https://github.com/wsgavin/osxinit.git
 $ cd osxinit
 $ ./initilize.sh
