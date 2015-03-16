@@ -43,7 +43,7 @@ if [[ $XCODE_SELECT == "/Library/Developer/CommandLineTools" || \
 
   else
     echo "${COLOR_RED}${CHAR_XMARK}${COLOR_RESET} Xcode command line tools not installed."
-    abort "Please run xcode-select --install"
+    abort "Please run '$ xcode-select --install'"
 fi
 
 # Checking for git
