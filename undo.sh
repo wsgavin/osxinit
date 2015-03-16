@@ -14,25 +14,27 @@ set -e
 
 /usr/bin/which -s brew || abort "No homebrew installed!"
 
-# TODO brew cask list to uninnstall 
+# TODO brew cask list to uninnstall
 
+brew cask uninstall google-chrome
+brew cask uninstall firefox
+brew cask uninstall atom
+brew cask uninstall spotify
+brew cask uninstall microsoft-office
+brew cask uninstall 1password
+brew cask uninstall mailbox
+brew cask uninstall dropbox
+brew cask uninstall crashplan
 brew cask uninstall clamxav
 brew cask uninstall vlc
-brew cask uninstall firefox
 brew cask uninstall handbrake
 brew cask uninstall makemkv
-brew cask uninstall spotify
 brew cask uninstall the-unarchiver
-brew cask uninstall google-chrome
-brew cask uninstall mailbox
 brew cask uninstall silverlight
 brew cask uninstall gopro-studio
 brew cask uninstall real-vnc
-brew cask uninstall dropbox
-brew cask uninstall crashplan
 brew cask uninstall transmission
-brew cask uninstall microsoft-office
-brew cask uninstall atom
+brew cask uninstall 1password
 #brew cask uninstall parallels-desktop
 #brew cask uninstall minecraft
 #brew cask uninstall sublime-text
