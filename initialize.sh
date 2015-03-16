@@ -35,23 +35,25 @@ brew install ruby-build
 brew install ctags
 brew install caskroom/cask/brew-cask
 
+brew cask install google-chrome
+brew cask install firefox
+brew cask install atom
+brew cask install spotify
+brew cask install microsoft-office
+brew cask install 1password
+brew cask install mailbox
+brew cask install dropbox
+brew cask install crashplan
 brew cask install clamxav
 brew cask install vlc
-brew cask install firefox
 brew cask install handbrake
 brew cask install makemkv
-brew cask install spotify
 brew cask install the-unarchiver
-brew cask install google-chrome
-brew cask install mailbox
 brew cask install silverlight
 brew cask install gopro-studio
 brew cask install real-vnc
-brew cask install dropbox
-brew cask install crashplan
 brew cask install transmission
-brew cask install microsoft-office
-brew cask install atom
+brew cask install 1password
 #brew cask install parallels-desktop
 #brew cask install minecraft
 #brew cask install sublime-text
@@ -61,3 +63,14 @@ brew cask install atom
 brew cleanup
 
 exit 0
+
+# Non brew cask installs
+#
+# Western Digital Disk Utilities
+# Brother P-Touch software (lable maker)
+#
+# Apps purchased through App Store
+#
+# Day One
+# Gemini
+#
