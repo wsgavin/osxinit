@@ -48,7 +48,7 @@ brew cask install silverlight
 brew cask install gopro-studio
 brew cask install real-vnc
 brew cask install dropbox
-brew cask uninstall crashplan
+brew cask install crashplan
 brew cask install transmission
 brew cask install microsoft-office
 brew cask install atom
