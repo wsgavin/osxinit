@@ -36,3 +36,11 @@ $ git clone https://github.com/wsgavin/osxinit.git
 $ cd osxinit
 $ ./initilize.sh
 ```
+
+## Java
+
+For Minecraft, the latest Java update from Apple is required. You can find the download at the following URL.
+
+https://support.apple.com/kb/DL1572?locale=en_US
+
+Follow the instructions provided on the site.
