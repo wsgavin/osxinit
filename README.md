@@ -44,3 +44,9 @@ For Minecraft, the latest Java update from Apple is required. You can find the d
 https://support.apple.com/kb/DL1572?locale=en_US
 
 Follow the instructions provided on the site.
+
+## TODO
+
+### OS X settings
+
+- Screen Saver
