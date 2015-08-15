@@ -69,3 +69,8 @@ alias uall='umac; ubrew; unpm; ugem'
 alias epoch='date +%s'
 
 alias grep='grep --color=auto'
+
+# java
+alias java6='export JAVA_HOME=$JAVA_6_HOME'
+alias java7='export JAVA_HOME=$JAVA_7_HOME'
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
