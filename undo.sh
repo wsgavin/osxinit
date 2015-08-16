@@ -35,6 +35,8 @@ brew cask uninstall gopro-studio
 brew cask uninstall real-vnc
 brew cask uninstall transmission
 brew cask uninstall 1password
+brew cask uninstall java7
+brew cask uninstall java
 #brew cask uninstall parallels-desktop
 #brew cask uninstall minecraft
 #brew cask uninstall sublime-text

@@ -61,3 +61,12 @@ source $(brew --prefix nvm)/nvm.sh
 if [ -f $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm ]; then
   source $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm
 fi
+
+# Initialize gvm
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
+
+# Initialize jenv
+eval "$(jenv init -)"
+
+
+

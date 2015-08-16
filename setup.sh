@@ -68,8 +68,8 @@ source $(brew --prefix nvm)/nvm.sh
 echo
 echo Installing nodejs.
 
-nvm install v0.10.36
-nvm alias default v0.10.36
+nvm install v0.12.7
+nvm alias default v0.12.7
 nvm use default
 
 # Install node modules.
@@ -86,6 +86,20 @@ npm install -g \
   firebase-tools
 
 npm cache clean
+
+echo
+echo Initializing groovy
+# Not yet in brew
+
+source "$HOME/.gvm/bin/gvm-init.sh"
+gvm install groovy
+
+echo
+echo Initializing jenv
+
+jenv add /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
 
 echo
 echo Close this terminal and open a new one.
