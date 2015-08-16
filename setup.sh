@@ -35,10 +35,21 @@ git config --global color.ui auto
 git config --global push.default simple
 git config --global format.pretty "%h - %an, %ar : %s"
 
+# Initializing vim
+
+echo
+echo Initializing vim...
+
+mkdir $HOME/.vim
+mkdir $HOME/.vim/backups
+mkdir $HOME/.vim/swaps
+mkdir $Home/.vim/undo
+
+
 # Installing Ruby with rbenv.
 
 echo
-echo Installing Ruby.
+echo Installing Ruby...
 rbenv install 2.2.0
 rbenv global 2.2.0
 
@@ -66,7 +77,7 @@ source $(brew --prefix nvm)/nvm.sh
 # Installing nodejs with nvm
 
 echo
-echo Installing nodejs.
+echo Installing nodejs...
 
 nvm install v0.12.7
 nvm alias default v0.12.7
@@ -75,7 +86,7 @@ nvm use default
 # Install node modules.
 
 echo
-echo Installing node modules.
+echo Installing node modules...
 
 npm install -g \
   yo \
@@ -88,18 +99,20 @@ npm install -g \
 npm cache clean
 
 echo
-echo Initializing groovy
+echo Initializing groovy...
 # Not yet in brew
 
 source "$HOME/.gvm/bin/gvm-init.sh"
 gvm install groovy
 
 echo
-echo Initializing jenv
+echo Initializing jenv...
 
-jenv add /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/
 jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
+
+jenv rehash
 
 echo
 echo Close this terminal and open a new one.

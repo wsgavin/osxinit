@@ -36,6 +36,7 @@ brew install jenv
 brew install ctags
 
 brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
 
 brew cask install google-chrome
 brew cask install spotify
@@ -63,6 +64,7 @@ brew cask install cleanmymac
 brew cask install snagit
 
 brew cleanup
+brew cask cleanup
 
 # Installing gvm, currently not in homebrew
 curl -s get.gvmtool.net | bash
