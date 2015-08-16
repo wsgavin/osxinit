@@ -14,11 +14,9 @@ set -e
 
 /usr/bin/which -s brew || abort "No homebrew installed!"
 
-# TODO brew cask list to uninnstall
+# TODO brew cask list to uninstall
 
 brew cask uninstall google-chrome
-brew cask uninstall firefox
-brew cask uninstall atom
 brew cask uninstall spotify
 brew cask uninstall microsoft-office
 brew cask uninstall 1password
@@ -37,11 +35,11 @@ brew cask uninstall transmission
 brew cask uninstall 1password
 brew cask uninstall java7
 brew cask uninstall java
-#brew cask uninstall parallels-desktop
-#brew cask uninstall minecraft
-#brew cask uninstall sublime-text
-#brew cask uninstall cleanmymac
-#brew cask uninstall snagit
+brew cask uninstall parallels-desktop
+brew cask uninstall minecraft
+brew cask uninstall sublime-text
+brew cask uninstall cleanmymac
+brew cask uninstall snagit
 
 # Cleaning up home directory
 rm -rf ~/.cache
