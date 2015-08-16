@@ -38,8 +38,6 @@ brew install ctags
 brew install caskroom/cask/brew-cask
 
 brew cask install google-chrome
-brew cask install firefox
-brew cask install atom
 brew cask install spotify
 brew cask install microsoft-office
 brew cask install 1password
@@ -58,11 +56,11 @@ brew cask install transmission
 brew cask install 1password
 brew cask install java7
 brew cask install java
-#brew cask install parallels-desktop
-#brew cask install minecraft
-#brew cask install sublime-text
-#brew cask install cleanmymac
-#brew cask install snagit
+brew cask install sublime-text3
+brew cask install parallels-desktop
+brew cask install minecraft
+brew cask install cleanmymac
+brew cask install snagit
 
 brew cleanup
 

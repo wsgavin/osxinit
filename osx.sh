@@ -27,12 +27,6 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 # Add Spotify
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Spotify.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
-# Add Mailbox
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mailbox (Beta).app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-
-# Add Atom
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Atom.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-
 # Add Terminal
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Terminal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
