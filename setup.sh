@@ -13,7 +13,7 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # Add the homebrew version of bash to /etc/shells
 
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
-  echo "/usr/local/bin/bash" >> /etc/shells
+  sudo echo "/usr/local/bin/bash" >> /etc/shells
 fi
 
 # Change the default shell for the current user

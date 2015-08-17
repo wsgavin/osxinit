@@ -24,7 +24,6 @@ brew install bash-completion
 brew install vim --override-system-vi
 brew install git
 brew install wget
-brew install vim
 brew install ack
 brew install ffmpeg
 brew reinstall ffmpeg --with-faac
@@ -60,6 +59,10 @@ brew cask install parallels-desktop
 brew cask install minecraft
 brew cask install cleanmymac
 brew cask install snagit
+brew cask install skype
+brew cask install github-desktop
+brew cask install adobe-reader
+brew cask install eclipse-java
 
 brew cleanup
 brew cask cleanup
