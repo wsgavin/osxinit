@@ -15,6 +15,18 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 chflags nohidden ~/Library
 
 ##
+# Terminal
+##
+
+defaults write com.apple.terminal "Default Window Settings" Pro
+defaults write com.apple.terminal "Startup Window Settings" Pro
+
+# Setting terminal to close after clean exit.
+# TODO There should be a better way to do this.
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Pro:shellExitAction 1" \
+    ~/Library/Preferences/com.apple.Terminal.plist
+
+##
 # Dock
 ##
 
@@ -42,6 +54,9 @@ do
   unset DLOC
 
 done
+
+# The following will reset the dock to it's default
+# defaults delete com.apple.dock; killall Dock
 
 
 # Add Chrome
