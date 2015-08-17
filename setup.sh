@@ -105,9 +105,13 @@ echo Initializing groovy...
 source "$HOME/.gvm/bin/gvm-init.sh"
 gvm install groovy
 
+# gvm creates this, no need for it
+rm ~/.zshrc
+
 echo
 echo Initializing jenv...
 
+eval "$(jenv init -)"
 jenv add /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/
 jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home

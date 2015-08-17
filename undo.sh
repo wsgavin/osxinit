@@ -32,12 +32,11 @@ brew cask uninstall silverlight
 brew cask uninstall gopro-studio
 brew cask uninstall real-vnc
 brew cask uninstall transmission
-brew cask uninstall 1password
 brew cask uninstall java7
 brew cask uninstall java
 brew cask uninstall parallels-desktop
 brew cask uninstall minecraft
-brew cask uninstall sublime-text
+brew cask uninstall sublime-text3
 brew cask uninstall cleanmymac
 brew cask uninstall snagit
 
@@ -48,7 +47,20 @@ rm -rf ~/.subversion
 rm -rf ~/.rbenv
 rm -rf ~/.gem
 rm -rf ~/.npm
-rm -rf ~/.nmv
+rm -rf ~/.nvm
+rm -rf ~/.gvm
+rm -rf ~/.jenv
+rm -rf ~/.vnc
+rm ~/.vimrc
+rm ~/.viminfo
+rm -rf ~/.vim
+rm -rf ~/.dotfiles
+rm -rf ~/.ctags
+rm ~/.hushlogin
+rm ~/.gitconfig
+rm ~/.bash*
+rm -rf ~/Applications
+rm ~/Downloads/javaforosx.dmg
 rm -rf ~/Library/Caches/Homebrew
 rm -rf ~/Library/Logs/Homebrew
 

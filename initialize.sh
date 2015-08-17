@@ -42,7 +42,6 @@ brew cask install google-chrome
 brew cask install spotify
 brew cask install microsoft-office
 brew cask install 1password
-brew cask install mailbox
 brew cask install dropbox
 brew cask install crashplan
 brew cask install clamxav
@@ -54,7 +53,6 @@ brew cask install silverlight
 brew cask install gopro-studio
 brew cask install real-vnc
 brew cask install transmission
-brew cask install 1password
 brew cask install java7
 brew cask install java
 brew cask install sublime-text3
