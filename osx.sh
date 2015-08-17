@@ -1,5 +1,11 @@
 #!/bin/sh
 
+function dock_app_xml()
+{
+    local app="$@"
+    echo "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+}
+
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -33,34 +39,60 @@ defaults write com.apple.terminal "Startup Window Settings" Pro
 # Set the default and magnification icon sizes
 defaults write com.apple.dock magnification -bool false
 
-# Remove application from the dock.
+# Remove applications from the dock. The following code removes on the
+# applications listed:
+#
+#     Safari
+#     Mail
+#     Contacts
+#     Calendar
+#     Notes
+#     Reminders
+#     Maps
+#     Photos
+#     Messages
+#     FaceTime
+#     Pages
+#     Numbers
+#     Keynote
+#     iTunes
+#     iBooks
+# 
+# The following command will give an idea of what application are on the dock.
+# 
+# defaults read com.apple.dock persistent-apps | grep label
+#
+# The following command will reset the dock to the set of default applications.
+# 
+# defaults delete com.apple.dock; killall Dock
+# 
 # TODO This was the only way I could find to do this, but there must be a
 #      better way.
 for APP in Safari Mail Contacts Calendar Notes Reminders Maps Photos \
-    Messages FaceTime Pages Numbers Keynote iTunes Fake iBooks;
+    Messages FaceTime Pages Numbers Keynote iTunes iBooks;
 do
 
-  DLOC=$(defaults read com.apple.dock persistent-apps | \
-    grep file-label | awk "/${APP}/  {printf NR}")
-  DLOC=$[$DLOC-1]
+    DLOC=$(defaults read com.apple.dock persistent-apps | \
+        grep file-label | awk "/${APP}/  {printf NR}")
+    DLOC=$[$DLOC-1]
 
-  if [ ${DLOC} -ge 0 ]
-  then
-    echo Removing ${APP} from dock...
-    /usr/libexec/PlistBuddy -c "Delete persistent-apps:${DLOC}" \
-        ~/Library/Preferences/com.apple.dock.plist
-  fi
+    if [ ${DLOC} -ge 0 ]
+    then
+        echo Removing ${APP} from dock...
+        /usr/libexec/PlistBuddy -c "Delete persistent-apps:${DLOC}" \
+            ~/Library/Preferences/com.apple.dock.plist
+    fi
 
-  unset DLOC
+    unset DLOC
 
 done
 
-# The following will reset the dock to it's default
-# defaults delete com.apple.dock; killall Dock
-
+unset APP
 
 # Add Chrome
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add \
+    $(dock_app_xml('/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app'))
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 # Add Spotify
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/spotify/latest/Spotify.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
