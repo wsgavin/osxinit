@@ -21,6 +21,29 @@ chflags nohidden ~/Library
 # Set the default and magnification icon sizes
 defaults write com.apple.dock magnification -bool false
 
+# Remove application from the dock.
+# TODO This was the only way I could find to do this, but there must be a
+#      better way.
+for APP in Safari Mail Contacts Calendar Notes Reminders Maps Photos \
+    Messages FaceTime Pages Numbers Keynote iTunes Fake iBooks;
+do
+
+  DLOC=$(defaults read com.apple.dock persistent-apps | \
+    grep file-label | awk "/${APP}/  {printf NR}")
+  DLOC=$[$DLOC-1]
+
+  if [ ${DLOC} -ge 0 ]
+  then
+    echo Removing ${APP} from dock...
+    /usr/libexec/PlistBuddy -c "Delete persistent-apps:${DLOC}" \
+        ~/Library/Preferences/com.apple.dock.plist
+  fi
+
+  unset DLOC
+
+done
+
+
 # Add Chrome
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
