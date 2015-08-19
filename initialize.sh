@@ -37,32 +37,32 @@ brew install ctags
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
-brew cask install google-chrome
-brew cask install spotify
-brew cask install microsoft-office
 brew cask install 1password
-brew cask install dropbox
-brew cask install crashplan
-brew cask install clamxav
-brew cask install vlc
-brew cask install handbrake
-brew cask install makemkv
-brew cask install the-unarchiver
-brew cask install silverlight
-brew cask install gopro-studio
-brew cask install real-vnc
-brew cask install transmission
-brew cask install java7
-brew cask install java
-brew cask install sublime-text3
-brew cask install parallels-desktop
-brew cask install minecraft
-brew cask install cleanmymac
-brew cask install snagit
-brew cask install skype
-brew cask install github-desktop
 brew cask install adobe-reader
+brew cask install clamxav
+brew cask install cleanmymac
+brew cask install crashplan
+brew cask install dropbox
 brew cask install eclipse-java
+brew cask install github-desktop
+brew cask install google-chrome
+brew cask install gopro-studio
+brew cask install handbrake
+brew cask install java
+brew cask install java7
+brew cask install makemkv
+brew cask install microsoft-office
+brew cask install minecraft
+brew cask install parallels-desktop
+brew cask install real-vnc
+brew cask install silverlight
+brew cask install skype
+brew cask install snagit
+brew cask install spotify
+brew cask install sublime-text3
+brew cask install the-unarchiver
+brew cask install transmission
+brew cask install vlc
 
 brew cleanup
 brew cask cleanup
