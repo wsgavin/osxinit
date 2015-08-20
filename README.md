@@ -2,7 +2,7 @@
 
 These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments.
 
-The one major difference I feel I've done is to setup install scripts per program/tool to modularize the install process. Also, I did not copy verbatum. Not particularly interested in capying someone exactly, just to be inspired by them.
+The one major difference I feel I've done is to setup install scripts per program/tool to modularize the install process. Also, I did not copy verbatum. Not particularly interested in copying someone exactly, just to be inspired by them.
 
 ## Requirements
 
@@ -19,6 +19,9 @@ If an OS X fresh install you will probably have to do the following.
 
     $ xcode-select --install
 
+![ALT xcode-select Install Screen][./images/xcode-select.install.png]
+
+TODO: Grab screen shots.
 TODO: Install vs. Xcode and go ahead and download java.
 
 I did this because I was not initially aware of the process and thought documenting how to get there was worth it. For me it's trivial now, but for the uninitiated probably worth the understanding.
