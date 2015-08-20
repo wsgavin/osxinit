@@ -13,6 +13,8 @@ There's an order to the scripts.
 
 `check.sh` essentially validates that you have some prerequisits before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through these any installs if you do not meet the requirements already. Otherwise the script will let you know all is good.
 
+I wrote this script because I was not initially aware of the process and thought documenting how to get there was worth it. For me it's trivial now, but for the uninitiated probably worth the understanding.
+
 ## `initialize.sh`
 
 `initialize.sh` will start the base install of tools and applications. Essentially this is homebrew doing the major lifting. At this time there is only one tool I cannot install via homebrew, `gvm`.
@@ -35,11 +37,15 @@ To run these scripts the OS X box will need to need to meet a few requirements.
 - Internet connection
 - Xcode command line tools i.e. `git`
 
-Run the follwoing command below as yourself.
+Run the follwoing command below.
 
     $ curl -s https://raw.githubusercontent.com/wsgavin/osxinit/master/check.sh | sh
 
-If an OS X fresh install you will probably have to do the following.
+If it's reported that you do not have an Internet connection you likely have some issues. I say this because the script itselft is downloaded via the Internet. Apologies, but I cannot help here.
+
+If you find you are not in the `admin` group you will need to work with your system administrator. Otherwise you will not get far isntalling software.
+
+If an OS X fresh install you will probably have to install some xcode tools. The script will inform you what to run. For convienence I have put it below as well.
 
     $ xcode-select --install
 
@@ -47,18 +53,17 @@ The following are the expected windows that will pop up during the install.
 Click 'Install':
 ![xcode-select Install Screen](./images/xcode-select.install.png)
 
-Click 'Agree':
-![xcode-select Agreement Screen](./images/xcode-select.agreement.png)
+Once you click install you will need to agree to the license agreement. After that the install will download and install `xcode-select` tools.
 
-Downloading and Installed:
-![xcode-select Downloading Screen](./images/xcode-select.downloading.png)
-![ALT xcode-select Installed Screen](./images/xcode-select.installed.png)
+Once you feel you have corrected any issues run the script again. Once all the checks pass you will be greeted with a message saying "All good to go..." and will instruct you on the next steps.
 
-Once you are here the installation is finished.
+
+
+
 
 TODO: Install vs. Xcode and go ahead and download java.
 
-I did this because I was not initially aware of the process and thought documenting how to get there was worth it. For me it's trivial now, but for the uninitiated probably worth the understanding.
+
 
 Once complete the `check.sh` script should tell you it's all good to go.
 
