@@ -1,8 +1,31 @@
-# OS X Initialization
+# OS X Setup
 
-These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments.
+These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments. Essentially Mathias Bynens has been the major contributor. His dotfile can be found here https://github.com/mathiasbynens/dotfiles.
 
-The one major difference I feel I've done is to setup install scripts per program/tool to modularize the install process. Also, I did not copy verbatum. Not particularly interested in copying someone exactly, just to be inspired by them.
+There's an order to the scripts.
+
+1. `check.sh`
+2. `initialize.sh`
+3. `setup.sh`
+4. `osx.sh`
+
+Each script has it's purpose.
+
+## `check.sh`
+
+`check.sh` essentially validates that you have some prerequisits before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through these easy installs if you do not have them already. Otherwise the script will let you know all is good.
+
+## `initialize.sh`
+
+`initialize.sh` will start the base install of tools and applications. Essentially this is homebrew doing the major lifting. At this time there is onlyl one tool I cannot install via homebrew, `gvm`.
+
+## `setup.sh`
+
+`setup.sh` is a combination of environmental setups (e.g. copying dotfiles in the home directory) as well as some additional installations. At some point I may be able to combine `initialize.sh` and `setup.sh` in one script but I've kept them separate for now.
+
+## `osx.sh`
+
+`osx.sh` sets up some OS X specifics (e.g. Terminal defaults, Dock adjustments) that I prefer.
 
 ## Requirements
 
