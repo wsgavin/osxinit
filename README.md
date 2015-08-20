@@ -19,7 +19,7 @@ If an OS X fresh install you will probably have to do the following.
 
     $ xcode-select --install
 
-![ALT xcode-select Install Screen][./images/xcode-select.install.png]
+![ALT xcode-select Install Screen](./images/xcode-select.install.png)
 
 TODO: Grab screen shots.
 TODO: Install vs. Xcode and go ahead and download java.
