@@ -70,6 +70,15 @@ brew cask cleanup
 # Installing gvm, currently not in homebrew
 curl -s get.gvmtool.net | bash
 
+# Downloading Apple's version of Java. I am not sure how I will do this via
+# command line as of yet.
+echo "Downloading Apple's version of Java 6. The install file be located in \
+    your Downloads directory. Double click javaforosx.dmg and install the \
+    package and follow the prompts."
+wget -O ~/Downloads/javaforosx.dmg https://support.apple.com/downloads/DL1572/en_US/javaforosx.dmg
+echo
+echo "Don't forget to install!"
+
 exit 0
 
 # Non brew cask installs
