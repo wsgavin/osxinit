@@ -20,7 +20,6 @@ If an OS X fresh install you will probably have to do the following.
     $ xcode-select --install
 
 The following are the expected windows that will pop up during the install.
-
 Click 'Install':
 ![xcode-select Install Screen](./images/xcode-select.install.png)
 
