@@ -1,6 +1,6 @@
 # OS X Setup
 
-These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments. Essentially Mathias Bynens has been the major contributor. His dotfile can be found here https://github.com/mathiasbynens/dotfiles.
+These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments. Essentially Mathias Bynens has been the major influence. His dotfile can be found here https://github.com/mathiasbynens/dotfiles.
 
 There's an order to the scripts.
 
@@ -9,15 +9,13 @@ There's an order to the scripts.
 3. `setup.sh`
 4. `osx.sh`
 
-Each script has it's purpose.
-
 ## `check.sh`
 
-`check.sh` essentially validates that you have some prerequisits before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through these easy installs if you do not have them already. Otherwise the script will let you know all is good.
+`check.sh` essentially validates that you have some prerequisits before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through these any installs if you do not meet the requirements already. Otherwise the script will let you know all is good.
 
 ## `initialize.sh`
 
-`initialize.sh` will start the base install of tools and applications. Essentially this is homebrew doing the major lifting. At this time there is onlyl one tool I cannot install via homebrew, `gvm`.
+`initialize.sh` will start the base install of tools and applications. Essentially this is homebrew doing the major lifting. At this time there is only one tool I cannot install via homebrew, `gvm`.
 
 ## `setup.sh`
 
@@ -27,14 +25,17 @@ Each script has it's purpose.
 
 `osx.sh` sets up some OS X specifics (e.g. Terminal defaults, Dock adjustments) that I prefer.
 
-## Requirements
+## Let's get started...
+
+**N.B.** When running scripts you will not have to start with any `sudu` commands. They are embeded in the script when needed.
 
 To run these scripts the OS X box will need to need to meet a few requirements.
 
+- Your account is an administrator
 - Internet connection
 - Xcode command line tools i.e. `git`
 
-I've created a script to test for these requirements. And yes, if you can run this you should already have an Internet connection.
+Run the follwoing command below as yourself.
 
     $ curl -s https://raw.githubusercontent.com/wsgavin/osxinit/master/check.sh | sh
 
