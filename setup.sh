@@ -4,6 +4,14 @@
 # /usr/local/bin & /usr/local/opt/coreutils/libexec/gnubin to utilize in this
 # script.
 
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
 echo
 echo Initializing the home directory with dotfiles.
 cp -r home/.[^.]* ~/
@@ -113,9 +121,12 @@ echo
 echo Initializing jenv...
 
 eval "$(jenv init -)"
+
+# TODO: Loop through this directory to run each one.
+
 jenv add /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/
 jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
-jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
 
 jenv rehash
 

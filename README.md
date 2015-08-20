@@ -19,11 +19,13 @@ If an OS X fresh install you will probably have to do the following.
 
     $ xcode-select --install
 
-Install vs. Xcode and go ahead and download java.
+TODO: Install vs. Xcode and go ahead and download java.
 
 I did this because I was not initially aware of the process and thought documenting how to get there was worth it. For me it's trivial now, but for the uninitiated probably worth the understanding.
 
 Once complete the `check.sh` script should tell you it's all good to go.
+
+TODO: Have it spit out the commands below.
 
 ## OS X Initialization Files
 
