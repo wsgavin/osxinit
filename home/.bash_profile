@@ -51,6 +51,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # Initialize ruby...
+# TODO: Consider using RBENV_ROOT vs. ~/.rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Initialize nvm...
@@ -66,7 +67,8 @@ fi
 [[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 
 # Initialize jenv
-eval "$(jenv init -)"
+# TODO: Consider using JENV_ROOT vs. ~/.jenv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 
 

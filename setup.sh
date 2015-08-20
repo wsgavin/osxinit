@@ -9,6 +9,7 @@ echo Initializing the home directory with dotfiles.
 cp -r home/.[^.]* ~/
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Add the homebrew version of bash to /etc/shells
 
@@ -48,11 +49,11 @@ mkdir $Home/.vim/undo
 
 
 # Installing Ruby with rbenv.
-
+# TODO: Find out how to get the latest version. rbenv install -l lists them all.
 echo
 echo Installing Ruby...
-rbenv install 2.2.0
-rbenv global 2.2.0
+rbenv install 2.2.2
+rbenv global 2.2.2
 
 # Initialize Ruby environment so gems are installed in the correct location.
 
@@ -64,6 +65,7 @@ eval "$(/usr/local/bin/rbenv init -)"
 echo
 echo Installing compass
 gem install compass
+rbenv rehash
 
 
 # Initialize nvm environment
@@ -72,6 +74,7 @@ echo
 echo Initializing nvm...
 
 mkdir ~/.nvm # TODO add test for directory
+cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
@@ -114,13 +117,20 @@ echo Initializing jenv...
 
 eval "$(jenv init -)"
 
-# TODO: Loop through this directory to run each one.
-
-jenv add /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/
-jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
-jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
+# Loops through all the Java installs and adds them to jenv.
+for f in /Library/Java/JavaVirtualMachines/*
+do
+    jenv add "$f/Contents/Home"
+done
 
 jenv rehash
+
+echo
+echo Initializing python
+
+mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
+echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' \
+    >> /Users/warren/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 
 echo
 echo Close this terminal and open a new one.
