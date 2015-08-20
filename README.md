@@ -19,15 +19,15 @@ If an OS X fresh install you will probably have to do the following.
 
     $ xcode-select --install
 
+The following are the expected windows that will pop up during the install.
 ![ALT xcode-select Install Screen](./images/xcode-select.install.png)
-
+Click 'Install'
 ![ALT xcode-select Install Screen](./images/xcode-select.agreement.png)
-
+Click 'Agree'
 ![ALT xcode-select Install Screen](./images/xcode-select.downloading.png)
-
 ![ALT xcode-select Install Screen](./images/xcode-select.installed.png)
+Once you are here the installation is finished.
 
-TODO: Grab screen shots.
 TODO: Install vs. Xcode and go ahead and download java.
 
 I did this because I was not initially aware of the process and thought documenting how to get there was worth it. For me it's trivial now, but for the uninitiated probably worth the understanding.
