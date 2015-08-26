@@ -39,6 +39,9 @@ defaults write com.apple.terminal "Startup Window Settings" Pro
 # Set the default and magnification icon sizes
 defaults write com.apple.dock magnification -bool false
 
+# Setting dock icon size.
+defaults write com.apple.dock tilesize -int 48
+
 # Remove applications from the dock. The following code removes on the
 # applications listed:
 #
