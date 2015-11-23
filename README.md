@@ -11,7 +11,7 @@ There's an order to the scripts.
 
 ## `check.sh`
 
-`check.sh` essentially validates that you have some prerequisits before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through these any installs if you do not meet the requirements already. Otherwise the script will let you know all is good.
+`check.sh` essentially validates that you have some prerequisites before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through these any installs if you do not meet the requirements already. Otherwise the script will let you know all is good.
 
 I wrote this script because I was not initially aware of the process and thought documenting how to get there was worth it. For me it's trivial now, but for the uninitiated probably worth the understanding.
 
@@ -29,7 +29,7 @@ I wrote this script because I was not initially aware of the process and thought
 
 ## Let's get started...
 
-**N.B.** When running scripts you will not have to start with any `sudu` commands. They are embeded in the script when needed.
+**N.B.** When running scripts you will not have to start with any `sudu` commands. They are embedded in the script when needed.
 
 To run these scripts the OS X box will need to need to meet a few requirements.
 
@@ -37,15 +37,15 @@ To run these scripts the OS X box will need to need to meet a few requirements.
 - Internet connection
 - Xcode command line tools i.e. `git`
 
-Run the follwoing command below.
+Run the following command below.
 
     $ curl -s https://raw.githubusercontent.com/wsgavin/osxinit/master/check.sh | sh
 
-If it's reported that you do not have an Internet connection you likely have some issues. I say this because the script itselft is downloaded via the Internet. Apologies, but I cannot help here.
+If it's reported that you do not have an Internet connection you likely have some issues. I say this because the script itself is downloaded via the Internet. Apologies, but I cannot help here.
 
-If you find you are not in the `admin` group you will need to work with your system administrator. Otherwise you will not get far isntalling software.
+If you find you are not in the `admin` group you will need to work with your system administrator. Otherwise you will not get far installing software.
 
-If an OS X fresh install you will probably have to install some xcode tools. The script will inform you what to run. For convienence I have put it below as well.
+If an OS X fresh install you will probably have to install some Xcode tools. The script will inform you what to run. For convenience I have put it below as well.
 
     $ xcode-select --install
 

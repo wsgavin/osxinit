@@ -14,9 +14,9 @@
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
+  colorflag="--color"
 else # OS X `ls`
-	colorflag="-G"
+  colorflag="-G"
 fi
 
 # Always use color output for `ls`
@@ -50,7 +50,7 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 #####
 
 # Get Homebrew updates
-alias ubrew='brew update; brew doctor; brew upgrade; [ -f /Library/Caches/Homebrew ] && brew cleanup'
+alias ubrew='brew update; brew doctor; brew upgrade; brew cask update; brew cask cleanup; brew cleanup'
 
 # Get OS X Software updates
 alias umac='sudo softwareupdate -i -a'

@@ -39,7 +39,7 @@ brew tap caskroom/versions
 
 brew cask install 1password
 brew cask install adobe-reader
-brew cask install clamxav
+#brew cask install clamxav
 brew cask install cleanmymac
 brew cask install crashplan
 brew cask install dropbox
@@ -51,7 +51,7 @@ brew cask install handbrake
 brew cask install java
 brew cask install java7
 brew cask install makemkv
-brew cask install microsoft-office
+#brew cask install microsoft-office
 brew cask install minecraft
 brew cask install parallels-desktop
 brew cask install real-vnc

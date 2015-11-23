@@ -20,6 +20,11 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Finder
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
+
 ##
 # Terminal
 ##
@@ -107,3 +112,4 @@ defaults write com.apple.dock persistent-apps -array-add \
 # Restart Dock
 killall cfprefsd
 killall Dock
+killAll Finder
