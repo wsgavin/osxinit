@@ -64,7 +64,7 @@ if [ -f $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm ]; then
 fi
 
 # Initialize gvm
-[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Initialize jenv
 # TODO: Consider using JENV_ROOT vs. ~/.jenv
