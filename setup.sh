@@ -106,7 +106,7 @@ echo
 echo Initializing groovy...
 # Not yet in brew
 
-source "$HOME/.gvm/bin/gvm-init.sh"
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 gvm install groovy
 
 # gvm creates this, no need for it
