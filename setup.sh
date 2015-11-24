@@ -6,7 +6,10 @@
 
 echo
 echo Initializing the home directory with dotfiles.
-cp -r home/.[^.]* ~/
+cp -r home/.[!.]* ~/
+
+# Setting up the PATH for this script to work.
+
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -42,10 +45,10 @@ git config --global format.pretty "%h - %an, %ar : %s"
 echo
 echo Initializing vim...
 
-mkdir $HOME/.vim
-mkdir $HOME/.vim/backups
-mkdir $HOME/.vim/swaps
-mkdir $Home/.vim/undo
+mkdir "$HOME/.vim"
+mkdir "$HOME/.vim/backups"
+mkdir "$HOME/.vim/swaps"
+mkdir "$HOME/.vim/undo"
 
 
 # Installing Ruby with rbenv.
@@ -74,9 +77,10 @@ echo
 echo Initializing nvm...
 
 mkdir ~/.nvm # TODO add test for directory
-cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
+cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# shellcheck source=/dev/null
+source "$(brew --prefix nvm)/nvm.sh"
 
 # Installing nodejs with nvm
 
@@ -106,6 +110,7 @@ echo
 echo Initializing groovy...
 # Not yet in brew
 
+# shellcheck source=/dev/null
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 gvm install groovy
 
@@ -128,11 +133,11 @@ jenv rehash
 echo
 echo Initializing python
 
-mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
+mkdir -p "$HOME/Library/Python/2.7/lib/python/site-packages"
 #echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' \
 #    >> /Users/warren/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 echo "$(brew --prefix)/lib/python2.7/site-packages" > \
-    $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
+    "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
 
 echo
 echo Close this terminal and open a new one.

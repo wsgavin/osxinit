@@ -33,17 +33,15 @@ brew install rbenv
 brew install ruby-build
 brew install jenv
 brew install ctags
+brew install shellcheck
 
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
-brew cask install 1password
 brew cask install adobe-reader
-#brew cask install clamxav
 brew cask install cleanmymac
 brew cask install crashplan
 brew cask install dropbox
-brew cask install eclipse-java
 brew cask install github-desktop
 brew cask install google-chrome
 brew cask install gopro-studio
@@ -51,7 +49,6 @@ brew cask install handbrake
 brew cask install java
 brew cask install java7
 brew cask install makemkv
-#brew cask install microsoft-office
 brew cask install minecraft
 brew cask install parallels-desktop
 brew cask install real-vnc
@@ -64,11 +61,16 @@ brew cask install the-unarchiver
 brew cask install transmission
 brew cask install vlc
 
+#brew cask install 1password
+#brew cask install clamxav
+#brew cask install eclipse-java
+#brew cask install microsoft-office
+
 brew cleanup
 brew cask cleanup
 
-# Installing gvm, currently not in homebrew
-curl -s get.gvmtool.net | bash
+# Installing sdkman (gvm), currently not in homebrew
+curl -s http://get.sdkman.io | bash
 
 # Downloading Apple's version of Java. I am not sure how I will do this via
 # command line as of yet.

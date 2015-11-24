@@ -1,8 +1,8 @@
 #!/bin/sh
 
-function dock_app_xml()
+dock_app_xml()
 {
-    local app="$@"
+    local app=$*
     echo "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 }
 
@@ -82,7 +82,7 @@ do
 
     DLOC=$(defaults read com.apple.dock persistent-apps | \
         grep file-label | awk "/${APP}/  {printf NR}")
-    DLOC=$[$DLOC-1]
+    DLOC=$((DLOC-1))
 
     if [ ${DLOC} -ge 0 ]
     then

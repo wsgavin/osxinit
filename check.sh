@@ -12,9 +12,8 @@ CHAR_XMARK="\xE2\x9C\x97"
 
 # Host used to test Internet connection
 PING_HOST="raw.githubusercontent.com"
-#PING_HOST="madeup.di.namemadszxcv.com"
 
-function abort {
+abort() {
   echo "$1"
   exit 1
 }
@@ -24,7 +23,7 @@ echo "Checking a few things to make sure we are good to go..."
 echo
 
 # Checking for an Internet connection
-if /sbin/ping -s1 -t4 -o ${PING_HOST} &> /dev/null
+if /sbin/ping -s1 -t4 -o ${PING_HOST} >/dev/null 2>&1
   then
     echo "${COLOR_GREEN}${CHAR_CHECKMARK}${COLOR_RESET} We have an Internet connection."
   else
@@ -44,8 +43,11 @@ fi
 # Checking to make sure xcode-command line tools are installed.
 XCODE_SELECT=$(xcode-select -p 2>&1);
 
-if [[ $XCODE_SELECT == "/Library/Developer/CommandLineTools" || \
-  $XCODE_SELECT == "/Applications/Xcode.app/Contents/Developer" ]]
+#if [[ $XCODE_SELECT == "/Library/Developer/CommandLineTools" || \
+#  $XCODE_SELECT == "/Applications/Xcode.app/Contents/Developer" ]]
+
+if [ "$XCODE_SELECT" = '/Library/Developer/CommandLineTools' ] || \
+    [ "$XCODE_SELECT" = '/Applications/Xcode.app/Contents/Developer' ]
   then
     echo "${COLOR_GREEN}${CHAR_CHECKMARK}${COLOR_RESET} Xcode command line tools installed."
 
