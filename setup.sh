@@ -16,6 +16,9 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Add the homebrew version of bash to /etc/shells
 
+echo
+echo "Adding homebrew version of bash to /etc/shells"
+
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
   # TODO Not sure why I had to do this but it appears to work.
   echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
@@ -23,12 +26,16 @@ fi
 
 # Change the default shell for the current user
 
+echo
 chsh -s /usr/local/bin/bash
 
 # Future enhancements:
 # - Pass name & email as arguments
 
 # The following is my personal settings for git.
+
+echo
+echo "Configuring git"
 
 git config --global user.name "Warren Gavin"
 git config --global user.email "warren@dubelyoo.com"
@@ -53,8 +60,10 @@ mkdir "$HOME/.vim/undo"
 
 # Installing Ruby with rbenv.
 # TODO: Find out how to get the latest version. rbenv install -l lists them all.
+
 echo
 echo Installing Ruby...
+
 rbenv install 2.2.2
 rbenv global 2.2.2
 
@@ -62,11 +71,10 @@ rbenv global 2.2.2
 
 echo
 echo Initializing rbenv...
-
 eval "$(/usr/local/bin/rbenv init -)"
-
 echo
 echo Installing compass
+
 gem install compass
 rbenv rehash
 
@@ -87,9 +95,7 @@ source "$(brew --prefix nvm)/nvm.sh"
 echo
 echo Installing nodejs...
 
-nvm install v0.12.7
-nvm alias default v0.12.7
-nvm use default
+nvm install node
 
 # Install node modules.
 
