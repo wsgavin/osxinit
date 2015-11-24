@@ -7,7 +7,7 @@
 
 set -e
 
-# Instll homebrew
+# Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
@@ -70,7 +70,7 @@ brew cleanup
 brew cask cleanup
 
 # Installing sdkman (gvm), currently not in homebrew
-curl -s http://get.sdkman.io | bash
+#curl -s http://get.sdkman.io | bash
 
 # Downloading Apple's version of Java. I am not sure how I will do this via
 # command line as of yet.
@@ -86,7 +86,7 @@ exit 0
 # Non brew cask installs
 #
 # Western Digital Disk Utilities
-# Brother P-Touch software (lable maker)
+# Brother P-Touch software (label maker)
 #
 # Apps purchased through App Store
 #

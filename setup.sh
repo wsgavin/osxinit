@@ -17,7 +17,7 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 # Add the homebrew version of bash to /etc/shells
 
 echo
-echo "Adding homebrew version of bash to /etc/shells"
+echo Adding homebrew version of bash to /etc/shells
 
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
   # TODO Not sure why I had to do this but it appears to work.
@@ -35,7 +35,7 @@ chsh -s /usr/local/bin/bash
 # The following is my personal settings for git.
 
 echo
-echo "Configuring git"
+echo Configuring git...
 
 git config --global user.name "Warren Gavin"
 git config --global user.email "warren@dubelyoo.com"
@@ -64,8 +64,8 @@ mkdir "$HOME/.vim/undo"
 echo
 echo Installing Ruby...
 
-rbenv install 2.2.2
-rbenv global 2.2.2
+rbenv install 2.2.3
+rbenv global 2.2.3
 
 # Initialize Ruby environment so gems are installed in the correct location.
 
@@ -112,16 +112,16 @@ npm install -g \
 
 npm cache clean
 
-echo
-echo Initializing groovy...
+#echo
+#echo Initializing groovy...
 # Not yet in brew
 
 # shellcheck source=/dev/null
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-gvm install groovy
+#source "$HOME/.sdkman/bin/sdkman-init.sh"
+#gvm install groovy
 
 # gvm creates this, no need for it
-rm ~/.zshrc
+#rm ~/.zshrc
 
 echo
 echo Initializing jenv...
