@@ -140,10 +140,14 @@ echo
 echo Initializing python
 
 mkdir -p "$HOME/Library/Python/2.7/lib/python/site-packages"
+echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> \
+  "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
+
+#mkdir -p "$HOME/Library/Python/2.7/lib/python/site-packages"
 #echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' \
 #    >> /Users/warren/Library/Python/2.7/lib/python/site-packages/homebrew.pth
-echo "$(brew --prefix)/lib/python2.7/site-packages" > \
-    "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
+#echo "$(brew --prefix)/lib/python2.7/site-packages" > \
+#    "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
 
 echo
 echo Close this terminal and open a new one.
