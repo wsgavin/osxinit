@@ -15,11 +15,16 @@ brew upgrade
 brew doctor
 
 brew install coreutils
+sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
+brew install moreutils
 brew install findutils
 brew install gnu-sed --with-default-names
 brew install homebrew/dupes/grep --with-default-names
+
 brew install bash
-brew install bash-completion
+brew tap homebrew/versions
+brew install bash-completion2
 
 brew install vim --override-system-vi
 brew install git
