@@ -96,6 +96,8 @@ echo
 echo Installing nodejs...
 
 nvm install node
+nvm alias default node
+npm update -g
 
 # Install node modules.
 
