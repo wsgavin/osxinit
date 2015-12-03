@@ -1,15 +1,12 @@
+#!/usr/local/bin/bash
+#
 # Inspired by https://github.com/mathiasbynens/dotfiles
 #
-# Modularized some dotfiles to clean up the .bash_profile file.
-# * ~/.extra can be used for other settings you don’t want to commit.
-#for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-#	[ -r "$file" ] && [ -f "$file" ] && source "$file"
-#done
-#unset file
 
 #for DOTFILE in `find $HOME/.dotfiles -type f`
 for DOTFILE in ~/.dotfiles/.{path,bash_prompt,exports,aliases,functions,extra};
 do
+  # shellcheck source=/dev/null
   [ -f "${DOTFILE}" ] && source "${DOTFILE}"
 done
 unset DOTFILE
@@ -46,8 +43,9 @@ done
   scp sftp ssh
 
 # If possible, add tab completion for many more commands
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  source $(brew --prefix)/etc/bash_completion
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  # shellcheck source=/dev/null
+  source "$(brew --prefix)/etc/bash_completion"
 fi
 
 # Initialize ruby...
@@ -56,14 +54,17 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Initialize nvm...
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# shellcheck source=/dev/null
+source "$(brew --prefix nvm)/nvm.sh"
 
 # If possible, add tab completion for nvm
-if [ -f $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm ]; then
-  source $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm
+if [ -f "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ]; then
+  # shellcheck source=/dev/null
+  source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 fi
 
 # Initialize gvm
+# shellcheck source=/dev/null
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Initialize jenv
