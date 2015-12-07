@@ -14,22 +14,25 @@ brew update
 brew upgrade
 brew doctor
 
+brew tap homebrew/versions
+brew tap homebrew/dupes
+
 brew install coreutils
 sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 brew install moreutils
-brew install findutils
+brew install findutils --with-default-names
 brew install gnu-sed --with-default-names
+brew install ack
 brew install homebrew/dupes/grep --with-default-names
 
 brew install bash
-brew tap homebrew/versions
 brew install bash-completion2
 
 brew install vim --override-system-vi
 brew install git
 brew install wget
-brew install ack
+
 brew install ffmpeg
 brew reinstall ffmpeg --with-faac
 brew install nmap
@@ -40,8 +43,11 @@ brew install jenv
 brew install ctags
 brew install shellcheck
 
-brew install caskroom/cask/brew-cask
+# Install cask...
+
 brew tap caskroom/versions
+
+brew install caskroom/cask/brew-cask
 
 brew cask install adobe-reader
 brew cask install cleanmymac

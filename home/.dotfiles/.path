@@ -5,7 +5,7 @@ export PATH="/usr/local/bin:$PATH"
 
 # The following path additions are to support coreutils.
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # The following path additions are to support gnu-sed.
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
