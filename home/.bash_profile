@@ -71,5 +71,11 @@ fi
 # TODO: Consider using JENV_ROOT vs. ~/.jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
+# Initialize Virtualenvwrapper
+if [ -f "$(brew --prefix)/bin/virtualenvwrapper.sh" ]; then
+  # shellcheck source=/dev/null
+  source "$(brew --prefix)/bin/virtualenvwrapper.sh"
+fi
+
 
 

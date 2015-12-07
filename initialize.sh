@@ -42,6 +42,7 @@ brew install ruby-build
 brew install jenv
 brew install ctags
 brew install shellcheck
+brew install python
 
 # Install cask...
 
