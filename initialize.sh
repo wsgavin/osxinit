@@ -8,7 +8,8 @@
 set -e
 
 # Install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ruby -e "$(curl -fsSL \
+    https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
 brew upgrade
@@ -47,26 +48,20 @@ brew install python
 # Install cask...
 
 brew tap caskroom/versions
-
 brew install caskroom/cask/brew-cask
 
 brew cask install adobe-reader
+brew cask install arduino
 brew cask install cleanmymac
-brew cask install crashplan
 brew cask install dropbox
-brew cask install github-desktop
 brew cask install google-chrome
-brew cask install gopro-studio
 brew cask install handbrake
 brew cask install java
 brew cask install java7
 brew cask install makemkv
-brew cask install minecraft
 brew cask install parallels-desktop
 brew cask install real-vnc
 brew cask install silverlight
-brew cask install skype
-brew cask install snagit
 brew cask install spotify
 brew cask install sublime-text3
 brew cask install the-unarchiver
@@ -77,19 +72,23 @@ brew cask install vlc
 #brew cask install clamxav
 #brew cask install eclipse-java
 #brew cask install microsoft-office
+#brew cask install crashplan
+#brew cask install github-desktop
+#brew cask install gopro-studio
+#brew cask install minecraft
+##brew cask install skype
+#brew cask install snagit
 
 brew cleanup
 brew cask cleanup
-
-# Installing sdkman (gvm), currently not in homebrew
-#curl -s http://get.sdkman.io | bash
 
 # Downloading Apple's version of Java. I am not sure how I will do this via
 # command line as of yet.
 echo "Downloading Apple's version of Java 6. The install file be located in \
     your Downloads directory. Double click javaforosx.dmg and install the \
     package and follow the prompts."
-wget -O ~/Downloads/javaforosx.dmg https://support.apple.com/downloads/DL1572/en_US/javaforosx.dmg
+wget -O ~/Downloads/javaforosx.dmg \
+  https://support.apple.com/downloads/DL1572/en_US/javaforosx.dmg
 echo
 echo "Don't forget to install!"
 
