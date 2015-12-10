@@ -4,6 +4,12 @@
 # /usr/local/bin & /usr/local/opt/coreutils/libexec/gnubin to utilize in this
 # script.
 
+# Ask for the administrator password upfront.
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until the script has finished.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 echo
 echo Initializing the home directory with dotfiles.
 cp -r home/.[!.]* ~/
@@ -59,13 +65,19 @@ mkdir "$HOME/.vim/undo"
 
 
 # Installing Ruby with rbenv.
-# TODO: Find out how to get the latest version. rbenv install -l lists them all.
 
 echo
 echo Installing Ruby...
 
-rbenv install 2.2.3
-rbenv global 2.2.3
+# Found this sed command to find the latest version of ruby from rbenv.
+# Shellcheck does not like the $ inside the single quotes. I'm not a sed expert
+# and not sure what to do to resolve the check. Ignoring for now as it works.
+# 
+# shellcheck disable=SC2016
+RUBY_VER="$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' | tr -d '[:space:]')"
+
+rbenv install "$RUBY_VER"
+rbenv global "$RUBY_VER"
 
 # Initialize Ruby environment so gems are installed in the correct location.
 
@@ -101,18 +113,18 @@ npm update -g
 
 # Install node modules.
 
-echo
-echo Installing node modules...
+#echo
+#echo Installing node modules...
 
-npm install -g \
-  yo \
-  grunt \
-  grunt-cli \
-  bower \
-  generator-angularfire \
-  firebase-tools
+#npm install -g \
+#  yo \
+#  grunt \
+#  grunt-cli \
+#  bower \
+#  generator-angularfire \
+#  firebase-tools
 
-npm cache clean
+#npm cache clean
 
 #echo
 #echo Initializing groovy...
