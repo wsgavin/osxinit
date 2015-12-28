@@ -6,6 +6,25 @@ dock_app_xml()
     echo "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 }
 
+##
+# System
+##
+
+# Setting some hostname details
+echo Setting hostname details...
+sudo scutil --set HostName musky
+sudo scutil --set LocalHostName musky
+sudo scutil --set ComputerName musky
+sudo defaults write \
+  /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName \
+  musky
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Setting timezone.
+sudo systemsetup -settimezone America/Chicago
+
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -14,13 +33,13 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 defaults write com.apple.dock wvous-bl-corner -int 5
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
-# Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+##
 # Finder
+##
+
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
 #/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist

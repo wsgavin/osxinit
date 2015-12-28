@@ -23,7 +23,7 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 # Add the homebrew version of bash to /etc/shells
 
 echo
-echo Adding homebrew version of bash to /etc/shells
+echo Adding homebrew version of bash to /etc/shells...
 
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
   # TODO Not sure why I had to do this but it appears to work.
@@ -33,6 +33,7 @@ fi
 # Change the default shell for the current user
 
 echo
+echo Setting shell...
 chsh -s /usr/local/bin/bash
 
 # Future enhancements:

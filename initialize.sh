@@ -73,6 +73,8 @@ brew cask install sublime-text3
 brew cask install the-unarchiver
 brew cask install transmission
 brew cask install vlc
+brew cask install sophos-anti-virus-home-edition
+brew cask install malwarebytes-anti-malware
 
 #brew cask install 1password
 #brew cask install clamxav
@@ -97,6 +99,8 @@ wget -O ~/Downloads/javaforosx.dmg \
   https://support.apple.com/downloads/DL1572/en_US/javaforosx.dmg
 echo
 echo "Don't forget to install!"
+
+hdiutil attach ~/Downloads/javaforosx.dmg
 
 exit 0
 
