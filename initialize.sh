@@ -51,6 +51,12 @@ brew install ctags
 brew install shellcheck
 brew install python
 
+# PHP 
+
+brew install php56 --with-pear
+brew install composer
+brew install zlib
+
 # Install cask...
 
 brew tap caskroom/versions
