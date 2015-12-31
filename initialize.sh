@@ -21,8 +21,9 @@ brew update
 brew upgrade
 brew doctor
 
-brew tap homebrew/versions
 brew tap homebrew/dupes
+brew tap homebrew/versions
+brew tap homebrew/homebrew-php
 
 brew install coreutils
 sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
@@ -51,10 +52,16 @@ brew install ctags
 brew install shellcheck
 brew install python
 
+# MySQL
+brew install mysql
+
 # PHP 
 brew install zlib
 brew install homebrew/php/php56 --with-pear
+brew install php56-mcrypt
 brew install composer
+
+
 
 
 # Install cask...
