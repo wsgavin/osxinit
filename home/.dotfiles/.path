@@ -1,5 +1,6 @@
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 # Adds additional php binaries.
 export PATH="/usr/local/opt/php56/bin:$PATH"
