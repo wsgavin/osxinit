@@ -111,33 +111,19 @@ echo Installing nodejs...
 
 nvm install node
 nvm alias default node
-npm update -g
+npm update --global
 
 # Install node modules.
 
-#echo
-#echo Installing node modules...
+echo
+echo Installing node modules...
 
-#npm install -g \
-#  yo \
-#  grunt \
-#  grunt-cli \
-#  bower \
-#  generator-angularfire \
-#  firebase-tools
+npm install --global \
+  yo \
+  grunt-cli \
+  bower \
 
-#npm cache clean
-
-#echo
-#echo Initializing groovy...
-# Not yet in brew
-
-# shellcheck source=/dev/null
-#source "$HOME/.sdkman/bin/sdkman-init.sh"
-#gvm install groovy
-
-# gvm creates this, no need for it
-#rm ~/.zshrc
+npm cache clean
 
 echo
 echo Initializing jenv...
