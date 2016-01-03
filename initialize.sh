@@ -114,6 +114,8 @@ echo
 echo "Don't forget to install!"
 
 hdiutil attach ~/Downloads/javaforosx.dmg
+sudo installer -package /Volumes/Java\ for\ OS\ X\ 2015-001/JavaForOSX.pkg -target /
+hdiutil detach /Volumes/Java\ for\ OS\ X\ 2015-001
 
 exit 0
 

@@ -4,12 +4,6 @@
 # /usr/local/bin & /usr/local/opt/coreutils/libexec/gnubin to utilize in this
 # script.
 
-# Ask for the administrator password upfront.
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 echo
 echo Initializing the home directory with dotfiles.
 cp -r home/.[!.]* ~/
@@ -146,17 +140,10 @@ echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >>
   "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
 
 mkdir "$HOME/.virtualenvs"
-pip install --upgrade setuptools
+pip install --upgrade --no-use-wheel pip setuptools
+#pip install --upgrade setuptools
 pip install virtualenv
 pip install virtualenvwrapper
-
-
-
-#mkdir -p "$HOME/Library/Python/2.7/lib/python/site-packages"
-#echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' \
-#    >> /Users/warren/Library/Python/2.7/lib/python/site-packages/homebrew.pth
-#echo "$(brew --prefix)/lib/python2.7/site-packages" > \
-#    "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
 
 echo
 echo Close this terminal and open a new one.
