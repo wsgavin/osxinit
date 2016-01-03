@@ -7,12 +7,6 @@
 
 set -e
 
-# Ask for the administrator password upfront.
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 # Install homebrew
 ruby -e "$(curl -fsSL \
     https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -26,7 +20,7 @@ brew tap homebrew/versions
 brew tap homebrew/homebrew-php
 
 brew install coreutils
-sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 brew install moreutils
 brew install findutils --with-default-names
@@ -41,12 +35,12 @@ brew install vim --override-system-vi
 brew install git
 brew install wget
 
-brew install ffmpeg
-brew reinstall ffmpeg --with-faac
+brew install ffmpeg --with-faac
+#brew reinstall ffmpeg --with-faac
 brew install nmap
 brew install nvm
-brew install rbenv
-brew install ruby-build
+brew install rbenv ruby-build
+#brew install ruby-build
 brew install jenv
 brew install ctags
 brew install shellcheck

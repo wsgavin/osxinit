@@ -11,6 +11,7 @@ cp -r home/.[!.]* ~/
 # Setting up the PATH for this script to work.
 
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/php56/bin:$PATH"
@@ -132,6 +133,16 @@ done
 
 jenv rehash
 
+#echo
+#echo Initializing php
+
+# To enable PHP in Apache add the following to httpd.conf and restart Apache:
+#    LoadModule php5_module    /usr/local/opt/php56/libexec/apache2/libphp5.so
+
+# The php.ini file can be found in:
+#     /usr/local/etc/php/5.6/php.ini
+
+
 echo
 echo Initializing python
 
@@ -144,6 +155,10 @@ pip install --upgrade --no-use-wheel pip setuptools
 #pip install --upgrade setuptools
 pip install virtualenv
 pip install virtualenvwrapper
+
+echo
+echo Initialize mysql
+mysql_secure_installation
 
 echo
 echo Close this terminal and open a new one.
