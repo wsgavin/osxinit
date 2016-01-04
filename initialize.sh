@@ -34,13 +34,12 @@ brew install bash-completion2
 brew install vim --override-system-vi
 brew install git
 brew install wget
+brew install tmux
 
 brew install ffmpeg --with-faac
-#brew reinstall ffmpeg --with-faac
 brew install nmap
 brew install nvm
 brew install rbenv ruby-build
-#brew install ruby-build
 brew install jenv
 brew install ctags
 brew install shellcheck
@@ -81,6 +80,8 @@ brew cask install the-unarchiver
 brew cask install transmission
 brew cask install vlc
 brew cask install sophos-anti-virus-home-edition
+sudo chown -R wsgavin:admin /usr/local/bin
+sudo chown -R wsgavin:admin /usr/local/share
 brew cask install malwarebytes-anti-malware
 
 #brew cask install 1password
@@ -97,19 +98,20 @@ brew cask install malwarebytes-anti-malware
 brew cleanup
 brew cask cleanup
 
-# Downloading Apple's version of Java. I am not sure how I will do this via
-# command line as of yet.
-echo "Downloading Apple's version of Java 6. The install file be located in \
-    your Downloads directory. Double click javaforosx.dmg and install the \
-    package and follow the prompts."
+# Downloading Apple's version of Java.
+echo
+echo "Installing Apple's version of Java."
 wget -O ~/Downloads/javaforosx.dmg \
   https://support.apple.com/downloads/DL1572/en_US/javaforosx.dmg
-echo
-echo "Don't forget to install!"
-
 hdiutil attach ~/Downloads/javaforosx.dmg
 sudo installer -package /Volumes/Java\ for\ OS\ X\ 2015-001/JavaForOSX.pkg -target /
 hdiutil detach /Volumes/Java\ for\ OS\ X\ 2015-001
+rm "$HOME/Downloads/javaforosx.dmg"
+
+echo
+echo "Initialization complete."
+echo
+echo "Run setup.sh next..."
 
 exit 0
 

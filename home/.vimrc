@@ -29,3 +29,12 @@ set ruler
 
 " Show the filename in the window titlebar
 set title
+
+" Initialize pathogen
+execute pathogen#infect()
+
+" Settings for solorized
+syntax enable
+set background=dark
+colorscheme solarized
+

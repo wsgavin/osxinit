@@ -59,6 +59,17 @@ mkdir "$HOME/.vim"
 mkdir "$HOME/.vim/backups"
 mkdir "$HOME/.vim/swaps"
 mkdir "$HOME/.vim/undo"
+mkdir "$HOME/.vim/autoload"
+mkdir "$HOME/.vim/bundle"
+
+# Install pathogen
+curl -LSso "$HOME/.vim/autoload/pathogen.vim" https://tpo.pe/pathogen.vim
+
+# Installing some plugins
+git clone git://github.com/tpope/vim-sensible.git \
+  "$HOME/.vim/bundle/vim-sensible"
+git clone git://github.com/altercation/vim-colors-solarized.git \
+  "$HOME/.vim/bundle/vim-colors-solarized"
 
 
 # Installing Ruby with rbenv.
@@ -158,7 +169,9 @@ pip install virtualenvwrapper
 
 echo
 echo Initialize mysql
+mysql.server start
 mysql_secure_installation
+mysql.server stop
 
 echo
 echo Close this terminal and open a new one.
