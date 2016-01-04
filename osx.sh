@@ -44,6 +44,11 @@ chflags nohidden ~/Library
 #/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
 
+defaults write com.apple.sidebarlists systemitems -dict-add ShowEjectables -bool true
+defaults write com.apple.sidebarlists systemitems -dict-add ShowHardDisks -bool true
+defaults write com.apple.sidebarlists systemitems -dict-add ShowRemovable -bool true
+defaults write com.apple.sidebarlists systemitems -dict-add ShowServers -bool true
+
 ##
 # Terminal
 ##

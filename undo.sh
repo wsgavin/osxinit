@@ -5,7 +5,7 @@
 # ASSUMPTION /usr/local & /opt can be fully deleted.
 
 
- abort() {
+abort() {
   echo "$1"
   exit 1
 }
