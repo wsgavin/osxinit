@@ -48,6 +48,12 @@ defaults write com.apple.sidebarlists systemitems -dict-add ShowEjectables -bool
 defaults write com.apple.sidebarlists systemitems -dict-add ShowHardDisks -bool true
 defaults write com.apple.sidebarlists systemitems -dict-add ShowRemovable -bool true
 defaults write com.apple.sidebarlists systemitems -dict-add ShowServers -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool false 
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+defaults write com.apple.finder NewWindowTarget PfHm
 
 ##
 # Terminal
