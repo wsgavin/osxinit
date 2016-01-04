@@ -67,9 +67,11 @@ fi
 echo
 echo "${COLOR_GREEN}${CHAR_CHECKMARK}${COLOR_RESET} All good to go..."
 echo
+git clone https://github.com/wsgavin/osxinit.git "$HOME/osxinit"
+echo
 echo "Initial setup of the system is next, run the following commands:"
 echo
-echo "$ git clone https://github.com/wsgavin/osxinit.git"
+#echo "$ git clone https://github.com/wsgavin/osxinit.git"
 echo "$ cd osxinit"
 echo "$ ./initialize.sh"
 echo
