@@ -53,8 +53,10 @@ defaults write com.apple.sidebarlists systemitems -dict-add ShowServers -bool tr
 # Terminal
 ##
 
-defaults write com.apple.terminal "Default Window Settings" Pro
-defaults write com.apple.terminal "Startup Window Settings" Pro
+open terminal/Solarized\ Dark\ xterm-256color.terminal
+delay 3
+defaults write com.apple.terminal "Default Window Settings" "Solarized Dark xterm-256color" 
+defaults write com.apple.terminal "Startup Window Settings" "Solarized Dark xterm-256color"
 
 # Setting terminal to close after clean exit.
 # TODO There should be a better way to do this.
