@@ -55,6 +55,12 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 defaults write com.apple.finder NewWindowTarget PfHm
 
+# Configuring the favorites.
+./bin/mysides remove "All My Files"
+./bin/mysides remove "iCloud Drive"
+./bin/mysides remove "Applications"
+./bin/mysides add $('whoami') file:///$HOME 
+
 ##
 # Terminal
 ##

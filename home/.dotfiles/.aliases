@@ -69,3 +69,8 @@ alias uall='umac; ubrew; unpm; ugem'
 alias epoch='date +%s'
 
 alias grep='grep --color=auto'
+
+# exit
+# Based on the new session saving El Capitan introduced, had to modify the
+# exit command not to include the GNU versions of commands.
+alias exit='PATH=/bin:/usr/bin:/sbin; exit'
