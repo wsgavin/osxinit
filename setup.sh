@@ -80,7 +80,7 @@ echo Installing Ruby...
 # Found this sed command to find the latest version of ruby from rbenv.
 # Shellcheck does not like the $ inside the single quotes. I'm not a sed expert
 # and not sure what to do to resolve the check. Ignoring for now as it works.
-# 
+#
 # shellcheck disable=SC2016
 RUBY_VER="$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' | tr -d '[:space:]')"
 
