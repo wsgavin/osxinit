@@ -60,7 +60,9 @@ defaults write com.apple.finder NewWindowTarget PfHm
 ##
 
 open terminal/Solarized\ Dark\ xterm-256color.terminal
-delay 3
+echo "Sleeping 5 seconds to ensure new profile is available..."
+sleep 5
+echo "Setting Solarized Dark xterm-256color as default terminal"
 defaults write com.apple.terminal "Default Window Settings" "Solarized Dark xterm-256color" 
 defaults write com.apple.terminal "Startup Window Settings" "Solarized Dark xterm-256color"
 
