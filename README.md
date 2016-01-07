@@ -85,12 +85,24 @@ https://support.apple.com/kb/DL1572?locale=en_US
 
 Follow the instructions provided on the site.
 
+# RESTART
+
 ## TODO
+
+### Requirements
+
+- Document the base install e.g. each step, inclusive of Apple ID, etc.
+
+### USB Installer
+
+```
+sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
+```
 
 ### OS X settings
 
 - Screen Saver
-- Document Soloarized: https://github.com/tamul/solarized-osx-terminal-colors
+- Document Solarized: https://github.com/tamul/solarized-osx-terminal-colors
 - Document mysides: https://github.com/mosen/mysides
 
 ### Sublime Setup Notes
@@ -109,3 +121,11 @@ Markdown.sublime-settings
 - Configure to not save energy.
 - Update
 - Install Parallels Tools
+
+### Manual Setup
+
+- Dropbox
+- CleanMyMac (serial)
+- Google Chrome (login)
+- Paralells (serial)
+- SSH keys

@@ -85,14 +85,11 @@ sudo chown -R "$(whoami)":admin /usr/local/share
 brew cask install malwarebytes-anti-malware
 
 #brew cask install 1password
-#brew cask install clamxav
-#brew cask install eclipse-java
 #brew cask install microsoft-office
 #brew cask install crashplan
-#brew cask install github-desktop
 #brew cask install gopro-studio
 #brew cask install minecraft
-##brew cask install skype
+#brew cask install skype
 #brew cask install snagit
 
 brew cleanup

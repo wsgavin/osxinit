@@ -29,7 +29,7 @@ while [ -z "$s_entered_full_name" ]
 do
 
   # shellcheck disable=SC2039 disable=SC2162
-  read -p "Enter new email address [$S_FULLNAME]: " s_entered_full_name
+  read -p "Enter full name [$S_FULLNAME]: " s_entered_full_name
 
   if [ -z "$s_entered_full_name" ]; then
     s_entered_full_name="$S_FULLNAME"
@@ -263,5 +263,7 @@ mysql.server stop
 echo
 echo Close this terminal and open a new one.
 echo
+
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 exit 0

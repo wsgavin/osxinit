@@ -4,6 +4,26 @@
 # TODO: Find proper regex for OS X hostname.
 #
 
+
+sidebarlists_device_visibility()
+{
+
+  local name=$1
+  local value=$2
+
+  count="$(/usr/libexec/PlistBuddy -c "Print :systemitems:VolumesList" ~/Library/Preferences/com.apple.sidebarlists.plist | grep -ca "Dict")"
+  count=$(( count - 1 ))
+
+  # shellcheck disable=SC2039
+  for (( i=0; i<=count; i++ )); do
+    n="$(/usr/libexec/PlistBuddy -c "Print :systemitems:VolumesList:$i:Name" ~/Library/Preferences/com.apple.sidebarlists.plist)"
+
+    if [[ $name =~ $n ]]; then
+      /usr/libexec/PlistBuddy -c "Set :systemitems:VolumesList:$i:Visibility $value" ~/Library/Preferences/com.apple.sidebarlists.plist
+    fi
+  done
+}
+
 dock_app_xml()
 {
     local app=$*
@@ -105,6 +125,15 @@ defaults write com.apple.sidebarlists systemitems -dict-add ShowRemovable -bool 
 defaults write com.apple.sidebarlists systemitems -dict-add ShowServers -bool true
 defaults write com.apple.finder AppleShowAllFiles -bool false
 
+# Setting the visibility of Devices in the Finder Sidebar
+sidebarlists_device_visibility "Computer" "AlwaysVisible"
+sidebarlists_device_visibility "Macintosh HD" "AlwaysVisible"
+sidebarlists_device_visibility "Network" "AlwaysVisible"
+
+#/usr/libexec/PlistBuddy -c "Set :systemitems:VolumesList:0:Visibility AlwaysVisible" ~/Library/Preferences/com.apple.sidebarlists.plist
+#/usr/libexec/PlistBuddy -c "Set :systemitems:VolumesList:1:Visibility AlwaysVisible" ~/Library/Preferences/com.apple.sidebarlists.plist
+
+
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -112,7 +141,7 @@ defaults write com.apple.finder NewWindowTarget PfHm
 
 # Configuring the favorites.
 ./bin/mysides remove "All My Files"
-./bin/mysides remove "iCloud Drive"
+./bin/mysides remove "iCloud"
 ./bin/mysides remove "Applications"
 ./bin/mysides add "$('whoami')" file:///"$HOME"
 
