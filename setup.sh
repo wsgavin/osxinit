@@ -4,6 +4,93 @@
 # /usr/local/bin & /usr/local/opt/coreutils/libexec/gnubin to utilize in this
 # script.
 
+#
+# TODO: Find proper regex for email address.
+#
+
+echo
+echo "The following script will configure some personal settings.  Press"
+echo "Return to accept the defaults in brackets."
+echo
+
+S_EMAIL=""
+S_FULLNAME="$(osascript -e 'long user name of (system info)')"
+
+s_entered_email=""
+s_entered_full_name=""
+regex_email="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+# Ask for full name for git.
+
+echo "Configuring git settings..."
+echo
+
+while [ -z "$s_entered_full_name" ]
+do
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Enter new email address [$S_FULLNAME]: " s_entered_full_name
+
+  if [ -z "$s_entered_full_name" ]; then
+    s_entered_full_name="$S_FULLNAME"
+  fi
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Confirm full name '$s_entered_full_name' [Y/n]: " yn
+
+  case "$yn" in
+    ""|[Yy])
+        S_FULLNAME="$s_entered_full_name"
+      ;;
+    *)
+      s_entered_full_name=""
+      ;;
+  esac
+
+  if [ -z "$s_entered_full_name" ]; then
+    echo "Something is wrong, let's try again."
+  fi
+
+done
+
+# Ask for valid email address for git.
+
+while [ -z "$s_entered_email" ]
+do
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Enter new email address [$S_EMAIL]: " s_entered_email
+
+  if [ -z "$s_entered_email" ]; then
+    s_entered_email="$S_EMAIL"
+  fi
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Confirm email address '$s_entered_email' [Y/n]: " yn
+
+  case "$yn" in
+    ""|[Yy])
+      # shellcheck disable=SC2039
+      if [[ "$s_entered_email" =~ $regex_email ]]; then
+        S_EMAIL="$s_entered_email"
+      else
+        s_entered_email=""
+      fi
+      ;;
+    *)
+      s_entered_email=""
+      ;;
+  esac
+
+  if [ -z "$s_entered_email" ]; then
+    echo "Something is wrong, let's try again."
+  fi
+
+done
+
+echo
+echo "Completing git personal settings..."
+
 echo
 echo Initializing the home directory with dotfiles.
 cp -r home/.[!.]* ~/
@@ -40,8 +127,8 @@ chsh -s /usr/local/bin/bash
 echo
 echo Configuring git...
 
-git config --global user.name "Warren Gavin"
-git config --global user.email "warren@dubelyoo.com"
+git config --global user.name "$S_FULLNAME"
+git config --global user.email "$S_EMAIL"
 git config --global core.autocrlf input
 git config --global core.safecrlf true
 git config --global core.editor vim

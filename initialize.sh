@@ -48,7 +48,7 @@ brew install python
 # MySQL
 brew install mysql
 
-# PHP 
+# PHP
 brew install zlib
 brew install homebrew/php/php56 --with-pear
 brew install php56-mcrypt

@@ -90,3 +90,15 @@ Follow the instructions provided on the site.
 ### OS X settings
 
 - Screen Saver
+- Document Soloarized: https://github.com/tamul/solarized-osx-terminal-colors
+- Document mysides: https://github.com/mosen/mysides
+
+### Sublime Setup Notes
+
+~/Library/Application Support/Sublime Text 3/Packages/User/
+
+Package Control.sublime-settings
+Preferences.sublime-settings
+Default (OSX).sublime-keymap
+Markdown.sublime-settings
+

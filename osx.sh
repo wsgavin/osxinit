@@ -1,17 +1,72 @@
 #!/bin/sh
 
+#
+# TODO: Find proper regex for OS X hostname.
+#
+
 dock_app_xml()
 {
     local app=$*
     echo "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 }
 
+
+S_HOSTNAME="$(hostname -s)"
+
+s_entered_hostname=""
+regex_hostname="^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$"
+
+echo
+echo "The following script will configure some personal settings."
+echo "Press Return to accept the defaults in brackets."
+echo
+
+echo "Configuring hostname..."
+echo
+
+while [ -z "$s_entered_hostname" ]
+do
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Enter new hostname [$S_HOSTNAME]: " s_entered_hostname
+
+  if [ -z "$s_entered_hostname" ]; then
+    s_entered_hostname="$S_HOSTNAME"
+  fi
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Confirm hostname '$s_entered_hostname' [Y/n]: " yn
+
+  case "$yn" in
+    ""|[Yy])
+      # shellcheck disable=SC2039
+      if [[ "$s_entered_hostname" =~ $regex_hostname ]]; then
+        S_HOSTNAME="$s_entered_hostname"
+      else
+        s_entered_hostname=""
+      fi
+      ;;
+    *)
+      s_entered_hostname=""
+      ;;
+  esac
+
+  if [ -z "$s_entered_hostname" ]; then
+    echo "Something is wrong, let's try again."
+  fi
+
+done
+
+echo
+echo "Completing git personal settings..."
+
 ##
 # System
 ##
 
 # Setting some hostname details
-echo Setting hostname details...
+echo
+echo "Setting hostname details..."
 sudo scutil --set HostName musky
 sudo scutil --set LocalHostName musky
 sudo scutil --set ComputerName musky
@@ -48,7 +103,7 @@ defaults write com.apple.sidebarlists systemitems -dict-add ShowEjectables -bool
 defaults write com.apple.sidebarlists systemitems -dict-add ShowHardDisks -bool true
 defaults write com.apple.sidebarlists systemitems -dict-add ShowRemovable -bool true
 defaults write com.apple.sidebarlists systemitems -dict-add ShowServers -bool true
-defaults write com.apple.finder AppleShowAllFiles -bool false 
+defaults write com.apple.finder AppleShowAllFiles -bool false
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -59,7 +114,7 @@ defaults write com.apple.finder NewWindowTarget PfHm
 ./bin/mysides remove "All My Files"
 ./bin/mysides remove "iCloud Drive"
 ./bin/mysides remove "Applications"
-./bin/mysides add $('whoami') file:///$HOME 
+./bin/mysides add "$('whoami')" file:///"$HOME"
 
 ##
 # Terminal
@@ -69,7 +124,7 @@ open terminal/Solarized\ Dark\ xterm-256color.terminal
 echo "Sleeping 5 seconds to ensure new profile is available..."
 sleep 5
 echo "Setting Solarized Dark xterm-256color as default terminal"
-defaults write com.apple.terminal "Default Window Settings" "Solarized Dark xterm-256color" 
+defaults write com.apple.terminal "Default Window Settings" "Solarized Dark xterm-256color"
 defaults write com.apple.terminal "Startup Window Settings" "Solarized Dark xterm-256color"
 
 # Setting terminal to close after clean exit.
@@ -105,15 +160,15 @@ defaults write com.apple.dock tilesize -int 48
 #     Keynote
 #     iTunes
 #     iBooks
-# 
+#
 # The following command will give an idea of what application are on the dock.
-# 
+#
 # defaults read com.apple.dock persistent-apps | grep label
 #
 # The following command will reset the dock to the set of default applications.
-# 
+#
 # defaults delete com.apple.dock; killall Dock
-# 
+#
 # TODO This was the only way I could find to do this, but there must be a
 #      better way.
 for APP in Safari Mail Contacts Calendar Notes Reminders Maps Photos \
