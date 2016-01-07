@@ -102,3 +102,10 @@ Preferences.sublime-settings
 Default (OSX).sublime-keymap
 Markdown.sublime-settings
 
+### Parallels Notes
+
+- 2 CPU 8 GB RAM 512MB Video
+- No Sharing
+- Configure to not save energy.
+- Update
+- Install Parallels Tools

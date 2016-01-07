@@ -80,8 +80,8 @@ brew cask install the-unarchiver
 brew cask install transmission
 brew cask install vlc
 brew cask install sophos-anti-virus-home-edition
-sudo chown -R wsgavin:admin /usr/local/bin
-sudo chown -R wsgavin:admin /usr/local/share
+sudo chown -R "$(whoami)":admin /usr/local/bin
+sudo chown -R "$(whoami)":admin /usr/local/share
 brew cask install malwarebytes-anti-malware
 
 #brew cask install 1password
