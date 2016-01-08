@@ -113,8 +113,6 @@ done
 echo
 echo "done."
 
-
-
 # Setting up the PATH for this script to work.
 
 export PATH="/usr/local/bin:$PATH"
@@ -123,19 +121,21 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/php56/bin:$PATH"
 
-
 # Install homebrew
+#
+# This is as automated as I could get.
 
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install \
+  > /tmp/install.hb.rb
 
 expect<<EOF
-set timeout 2
-spawn ruby -e "$(curl -fsSL \
-    https://raw.githubusercontent.com/Homebrew/install/master/install)"
+set timeout 30
+spawn ruby /tmp/install.hb.rb
 expect "Press RETURN to continue or any other key to abort"
 send "\r"
 expect "Password:"
 send "$sudo_password\r"
-expect eof
+expect "Run `brew help` to get started"
 EOF
 
 brew update
@@ -232,7 +232,7 @@ brew install nvm
 echo
 echo "Initializing nvm..."
 
-mkdir ~/.nvm # TODO add test for directory
+mkdir -p ~/.nvm # TODO add test for directory
 cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
 export NVM_DIR=~/.nvm
 # shellcheck source=/dev/null
