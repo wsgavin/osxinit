@@ -109,6 +109,7 @@ echo
 echo "Initialization complete."
 echo
 echo "Run setup.sh next..."
+echo
 
 exit 0
 

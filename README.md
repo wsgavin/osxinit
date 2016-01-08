@@ -89,6 +89,9 @@ Follow the instructions provided on the site.
 
 ## TODO
 
+- Combine initialize.sh and setup.sh.
+- Get AppleID `com.apple.ids.service.com.apple.ess` LoginAs I think.
+
 ### Requirements
 
 - Document the base install e.g. each step, inclusive of Apple ID, etc.
@@ -128,4 +131,43 @@ Markdown.sublime-settings
 - CleanMyMac (serial)
 - Google Chrome (login)
 - Paralells (serial)
-- SSH keys
+
+### SSH Keys
+
+I wanted a solution to be able to store my SSH keys not on my local box as backup. One way to do this is to encrypt the files. The following commands below will encrypt a file with a password. Let's assumed the file name is id_rsa.
+
+Encrypt:
+
+```
+openssl enc -in id_rsa -aes-256-cbc -pass stdin > id_rsa.enc
+```
+
+You won't specifically be prompted for a password but it is expected to be captured from STDIN. Once you enter you desired password press return.
+
+Decrypt:
+
+```
+openssl enc -in id_rsa.enc -d -aes-256-cbc -pass stdin > id_rsa
+```
+
+# Assumptions
+
+- Fresh install of OS X El Capitan is installed with one user. Assuming you follow the normal installation process this will be true.
+
+# Issues
+
+## Brew Download Failed
+
+During a brew install, sometimes the download fails. For example you may see something like this:
+
+```
+==> Downloading https://downloads.arduino.cc/arduino-1.6.7-macosx.zip
+######                                                                     8.5%
+curl: (56) SSLRead() return error -9806
+Error: Download failed on Cask 'arduino' with message: Download failed: https://downloads.arduino.cc/arduino-1.6.7-macosx.zip
+```
+
+I've not found a good way to "retry" the download or wait in this kind of situation. Still looking for a simple solution.
+
+
+

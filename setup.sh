@@ -13,7 +13,7 @@ echo "The following script will configure some personal settings.  Press"
 echo "Return to accept the defaults in brackets."
 echo
 
-S_EMAIL=""
+S_EMAIL="$(/usr/libexec/PlistBuddy -c "Print" ~/Library/Preferences/com.apple.ids.service.com.apple.madrid.plist | grep LoginAs | sed 's/.*LoginAs = //' 2>/dev/null)"
 S_FULLNAME="$(osascript -e 'long user name of (system info)')"
 
 s_entered_email=""
