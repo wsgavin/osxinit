@@ -188,48 +188,48 @@ export PATH="/usr/local/opt/php56/bin:$PATH"
 
 # Initialize nvm environment
 
-echo
-echo Initializing nvm...
+# echo
+# echo Initializing nvm...
 
-mkdir ~/.nvm # TODO add test for directory
-cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
-export NVM_DIR=~/.nvm
-# shellcheck source=/dev/null
-source "$(brew --prefix nvm)/nvm.sh"
+# mkdir ~/.nvm # TODO add test for directory
+# cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
+# export NVM_DIR=~/.nvm
+# # shellcheck source=/dev/null
+# source "$(brew --prefix nvm)/nvm.sh"
 
-# Installing nodejs with nvm
+# # Installing nodejs with nvm
 
-echo
-echo Installing nodejs...
+# echo
+# echo Installing nodejs...
 
-nvm install node
-nvm alias default node
-npm update --global
+# nvm install node
+# nvm alias default node
+# npm update --global
 
-# Install node modules.
+# # Install node modules.
 
-echo
-echo Installing node modules...
+# echo
+# echo Installing node modules...
 
-npm install --global \
-  yo \
-  grunt-cli \
-  bower \
+# npm install --global \
+#   yo \
+#   grunt-cli \
+#   bower \
 
-npm cache clean
+# npm cache clean
 
-echo
-echo Initializing jenv...
+# echo
+# echo Initializing jenv...
 
-eval "$(jenv init -)"
+# eval "$(jenv init -)"
 
-# Loops through all the Java installs and adds them to jenv.
-for f in /Library/Java/JavaVirtualMachines/*
-do
-    jenv add "$f/Contents/Home"
-done
+# # Loops through all the Java installs and adds them to jenv.
+# for f in /Library/Java/JavaVirtualMachines/*
+# do
+#     jenv add "$f/Contents/Home"
+# done
 
-jenv rehash
+# jenv rehash
 
 #echo
 #echo Initializing php
@@ -241,18 +241,18 @@ jenv rehash
 #     /usr/local/etc/php/5.6/php.ini
 
 
-echo
-echo Initializing python
+# echo
+# echo Initializing python
 
-mkdir -p "$HOME/Library/Python/2.7/lib/python/site-packages"
-echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> \
-  "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
+# mkdir -p "$HOME/Library/Python/2.7/lib/python/site-packages"
+# echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> \
+#   "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
 
-mkdir "$HOME/.virtualenvs"
-pip install --upgrade --no-use-wheel pip setuptools
-#pip install --upgrade setuptools
-pip install virtualenv
-pip install virtualenvwrapper
+# mkdir "$HOME/.virtualenvs"
+# pip install --upgrade --no-use-wheel pip setuptools
+# #pip install --upgrade setuptools
+# pip install virtualenv
+# pip install virtualenvwrapper
 
 #echo
 #echo Initialize mysql

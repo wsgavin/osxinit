@@ -111,7 +111,7 @@ do
 done
 
 echo
-echo "Done."
+echo "done."
 
 
 
@@ -125,8 +125,18 @@ export PATH="/usr/local/opt/php56/bin:$PATH"
 
 
 # Install homebrew
-ruby -e "$(curl -fsSL \
+
+
+expect<<EOF
+set timeout 2
+spawn ruby -e "$(curl -fsSL \
     https://raw.githubusercontent.com/Homebrew/install/master/install)"
+expect "Press RETURN to continue or any other key to abort"
+send "\r"
+expect "Password:"
+send "$sudo_password\r"
+expect eof
+EOF
 
 brew update
 brew upgrade
@@ -157,8 +167,14 @@ if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
 fi
 
 echo
-echo "Setting user shell to bash..."
-chsh -s /usr/local/bin/bash
+echo "Setting user shell to /usr/local/bin/bash..."
+
+expect<<EOF
+spawn chsh -s /usr/local/bin/bash
+expect "Password"
+send "$account_password\r"
+expect eof
+EOF
 
 echo "done."
 
@@ -211,6 +227,43 @@ brew install tmux
 brew install ffmpeg --with-faac
 brew install nmap
 brew install nvm
+
+
+echo
+echo "Initializing nvm..."
+
+mkdir ~/.nvm # TODO add test for directory
+cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
+export NVM_DIR=~/.nvm
+# shellcheck source=/dev/null
+source "$(brew --prefix nvm)/nvm.sh"
+
+# Installing nodejs with nvm
+
+echo
+echo "Installing nodejs..."
+
+nvm install node
+nvm alias default node
+npm update --global
+
+# Install node modules.
+
+echo
+echo Installing node modules...
+
+npm install --global \
+  yo \
+  grunt-cli \
+  bower \
+
+npm cache clean
+
+echo "done."
+
+
+
+
 brew install rbenv ruby-build
 
 
@@ -243,9 +296,43 @@ echo "done."
 
 
 brew install jenv
+
+
+echo
+echo "Initializing jenv..."
+
+eval "$(jenv init -)"
+
+# Loops through all the Java installs and adds them to jenv.
+for f in /Library/Java/JavaVirtualMachines/*
+do
+    jenv add "$f/Contents/Home"
+done
+
+jenv rehash
+
+echo "done."
+
+
 brew install ctags
 brew install shellcheck
 brew install python
+
+
+echo
+echo "Initializing python..."
+
+mkdir -p "$HOME/Library/Python/2.7/lib/python/site-packages"
+echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> \
+  "$HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth"
+
+mkdir "$HOME/.virtualenvs"
+pip install --upgrade --no-use-wheel pip setuptools
+#pip install --upgrade setuptools
+pip install virtualenv
+pip install virtualenvwrapper
+
+echo "done."
 
 # MySQL
 brew install mysql
