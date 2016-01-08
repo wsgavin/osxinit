@@ -7,6 +7,115 @@
 
 set -e
 
+unset account_password
+unset sudo_password
+unset mysql_root_password
+unset git_fullname
+unset git_fullname_entered
+unset git_email
+unset git_email_entered
+unset regex_email
+
+
+git_email="$(/usr/libexec/PlistBuddy -c "Print" \
+  ~/Library/Preferences/com.apple.ids.service.com.apple.madrid.plist | \
+  grep LoginAs | sed 's/.*LoginAs = //' 2>/dev/null)"
+
+git_fullname="$(osascript -e 'long user name of (system info)')"
+
+regex_email="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+# Grabbing a few passwords to automate the installation.
+
+stty -echo
+echo
+printf "Enter account password: "
+read -r account_password
+echo
+printf "Enter admin (sudo) password: "
+read -r sudo_password
+echo
+printf "Enter desited mysql root password: "
+read -r mysql_root_password
+stty echo
+
+# git_email_entered=""
+# get_fullname_entered=""
+
+
+echo
+echo "Configuring git settings..."
+echo
+
+while [ -z "$get_fullname_entered" ]
+do
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Enter full name [$git_fullname]: " get_fullname_entered
+
+  if [ -z "$get_fullname_entered" ]; then
+    get_fullname_entered="$git_fullname"
+  fi
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Confirm full name '$get_fullname_entered' [Y/n]: " yn
+
+  case "$yn" in
+    ""|[Yy])
+        git_fullname="$get_fullname_entered"
+      ;;
+    *)
+      get_fullname_entered=""
+      ;;
+  esac
+
+  if [ -z "$get_fullname_entered" ]; then
+    echo "Something is wrong, let's try again."
+  fi
+
+done
+
+# Ask for valid email address for git.
+
+while [ -z "$git_email_entered" ]
+do
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Enter new email address [$git_email]: " git_email_entered
+
+  if [ -z "$git_email_entered" ]; then
+    git_email_entered="$git_email"
+  fi
+
+  # shellcheck disable=SC2039 disable=SC2162
+  read -p "Confirm email address '$git_email_entered' [Y/n]: " yn
+
+  case "$yn" in
+    ""|[Yy])
+      # shellcheck disable=SC2039
+      if [[ "$git_email_entered" =~ $regex_email ]]; then
+        git_email="$git_email_entered"
+      else
+        git_email_entered=""
+      fi
+      ;;
+    *)
+      git_email_entered=""
+      ;;
+  esac
+
+  if [ -z "$git_email_entered" ]; then
+    echo "Something is wrong, let's try again."
+  fi
+
+done
+
+echo
+echo "Completing git personal settings..."
+
+
+
+
 # Install homebrew
 ruby -e "$(curl -fsSL \
     https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -31,15 +140,56 @@ brew install homebrew/dupes/grep --with-default-names
 brew install bash
 brew install bash-completion2
 
-brew install vim --override-system-vi
 brew install git
+
+echo
+echo Configuring git...
+
+git config --global user.name "$git_fullname"
+git config --global user.email "$git_email"
+git config --global core.autocrlf input
+git config --global core.safecrlf true
+git config --global core.editor vim
+git config --global merge.tool vimdiff
+git config --global color.ui auto
+git config --global push.default simple
+git config --global format.pretty "%h - %an, %ar : %s"
+
+echo
+
 brew install wget
+brew install vim --override-system-vi
+
+echo
+echo Initializing vim...
+
+mkdir "$HOME/.vim"
+mkdir "$HOME/.vim/backups"
+mkdir "$HOME/.vim/swaps"
+mkdir "$HOME/.vim/undo"
+mkdir "$HOME/.vim/autoload"
+mkdir "$HOME/.vim/bundle"
+
+# Install pathogen
+curl -LSso "$HOME/.vim/autoload/pathogen.vim" https://tpo.pe/pathogen.vim
+
+# Installing some plugins
+git clone git://github.com/tpope/vim-sensible.git \
+  "$HOME/.vim/bundle/vim-sensible"
+git clone git://github.com/altercation/vim-colors-solarized.git \
+  "$HOME/.vim/bundle/vim-colors-solarized"
+
+echo
+
+
 brew install tmux
 
 brew install ffmpeg --with-faac
 brew install nmap
 brew install nvm
 brew install rbenv ruby-build
+
+
 brew install jenv
 brew install ctags
 brew install shellcheck
@@ -47,6 +197,32 @@ brew install python
 
 # MySQL
 brew install mysql
+
+# mysql_secure_installation automated
+mysql.server start
+
+expect<<EOF
+set timeout 2
+spawn mysql_secure_installation
+expect "Press y|Y for Yes, any other key for No:"
+send "n\r"
+expect "New Password:"
+send_user "After New"
+send "$mysql_root_password\r"
+expect "Re-enter new password:"
+send "$mysql_root_password\r"
+expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+expect "Disallow root login remotely? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+expect "Remove test database and access to it? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+expect "Reload privilege tables now? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+expect eof
+EOF
+
+mysql.server stop
 
 # PHP
 brew install zlib
@@ -110,6 +286,14 @@ echo "Initialization complete."
 echo
 echo "Run setup.sh next..."
 echo
+
+unset account_password
+unset sudo_password
+unset mysql_root_password
+
+# This is done to avoid the use of /usr/local/bin/find as it is not compatible
+# with Apples bash sessions.
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 exit 0
 

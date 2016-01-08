@@ -87,12 +87,12 @@ echo "Completing git personal settings..."
 # Setting some hostname details
 echo
 echo "Setting hostname details..."
-sudo scutil --set HostName musky
-sudo scutil --set LocalHostName musky
-sudo scutil --set ComputerName musky
+sudo scutil --set HostName "$S_HOSTNAME"
+sudo scutil --set LocalHostName "$S_HOSTNAME"
+sudo scutil --set ComputerName "$S_HOSTNAME"
 sudo defaults write \
   /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName \
-  musky
+  "$S_HOSTNAME"
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
