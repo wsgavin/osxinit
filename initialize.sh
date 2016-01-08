@@ -111,9 +111,17 @@ do
 done
 
 echo
-echo "Completing git personal settings..."
+echo "Done."
 
 
+
+# Setting up the PATH for this script to work.
+
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/php56/bin:$PATH"
 
 
 # Install homebrew
@@ -140,10 +148,24 @@ brew install homebrew/dupes/grep --with-default-names
 brew install bash
 brew install bash-completion2
 
+echo
+echo "Adding homebrew version of bash to /etc/shells..."
+
+if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
+  # TODO Not sure why I had to do this but it appears to work.
+  echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+fi
+
+echo
+echo "Setting user shell to bash..."
+chsh -s /usr/local/bin/bash
+
+echo "done."
+
 brew install git
 
 echo
-echo Configuring git...
+printf "Configuring git..."
 
 git config --global user.name "$git_fullname"
 git config --global user.email "$git_email"
@@ -155,20 +177,22 @@ git config --global color.ui auto
 git config --global push.default simple
 git config --global format.pretty "%h - %an, %ar : %s"
 
-echo
+echo "done."
 
 brew install wget
 brew install vim --override-system-vi
 
 echo
-echo Initializing vim...
+printf "Initializing vim..."
 
-mkdir "$HOME/.vim"
-mkdir "$HOME/.vim/backups"
-mkdir "$HOME/.vim/swaps"
-mkdir "$HOME/.vim/undo"
-mkdir "$HOME/.vim/autoload"
-mkdir "$HOME/.vim/bundle"
+mkdir -p "$HOME/.vim"
+mkdir -p "$HOME/.vim/backups"
+mkdir -p "$HOME/.vim/swaps"
+mkdir -p "$HOME/.vim/undo"
+mkdir -p "$HOME/.vim/autoload"
+mkdir -p "$HOME/.vim/bundle"
+
+echo "done."
 
 # Install pathogen
 curl -LSso "$HOME/.vim/autoload/pathogen.vim" https://tpo.pe/pathogen.vim
@@ -188,6 +212,34 @@ brew install ffmpeg --with-faac
 brew install nmap
 brew install nvm
 brew install rbenv ruby-build
+
+
+
+echo
+echo "Installing Ruby..."
+
+# Found this sed command to find the latest version of ruby from rbenv.
+# Shellcheck does not like the $ inside the single quotes. I'm not a sed expert
+# and not sure what to do to resolve the check. Ignoring for now as it works.
+#
+# shellcheck disable=SC2016
+RUBY_VER="$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' | tr -d '[:space:]')"
+
+rbenv install "$RUBY_VER"
+rbenv global "$RUBY_VER"
+
+# Initialize Ruby environment so gems are installed in the correct location.
+
+echo
+echo "Initializing rbenv..."
+eval "$(/usr/local/bin/rbenv init -)"
+echo
+echo "Installing compass"
+
+gem install compass
+rbenv rehash
+
+echo "done."
 
 
 brew install jenv
@@ -280,6 +332,13 @@ hdiutil attach ~/Downloads/javaforosx.dmg
 sudo installer -package /Volumes/Java\ for\ OS\ X\ 2015-001/JavaForOSX.pkg -target /
 hdiutil detach /Volumes/Java\ for\ OS\ X\ 2015-001
 rm "$HOME/Downloads/javaforosx.dmg"
+
+
+
+echo
+printf "Initializing home directory with dotfiles..."
+cp -r home/.[!.]* ~/
+echo "done."
 
 echo
 echo "Initialization complete."

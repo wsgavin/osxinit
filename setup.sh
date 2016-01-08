@@ -91,9 +91,9 @@ echo
 # echo
 # echo "Completing git personal settings..."
 
-echo
-echo Initializing the home directory with dotfiles.
-cp -r home/.[!.]* ~/
+# echo
+# echo Initializing the home directory with dotfiles.
+# cp -r home/.[!.]* ~/
 
 # Setting up the PATH for this script to work.
 
@@ -105,19 +105,19 @@ export PATH="/usr/local/opt/php56/bin:$PATH"
 
 # Add the homebrew version of bash to /etc/shells
 
-echo
-echo Adding homebrew version of bash to /etc/shells...
+# echo
+# echo Adding homebrew version of bash to /etc/shells...
 
-if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
-  # TODO Not sure why I had to do this but it appears to work.
-  echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-fi
+# if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
+#   # TODO Not sure why I had to do this but it appears to work.
+#   echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+# fi
 
 # Change the default shell for the current user
 
-echo
-echo Setting shell...
-chsh -s /usr/local/bin/bash
+# echo
+# echo Setting shell...
+# chsh -s /usr/local/bin/bash
 
 # Future enhancements:
 # - Pass name & email as arguments
@@ -161,29 +161,29 @@ chsh -s /usr/local/bin/bash
 
 # Installing Ruby with rbenv.
 
-echo
-echo Installing Ruby...
+# echo
+# echo Installing Ruby...
 
-# Found this sed command to find the latest version of ruby from rbenv.
-# Shellcheck does not like the $ inside the single quotes. I'm not a sed expert
-# and not sure what to do to resolve the check. Ignoring for now as it works.
-#
-# shellcheck disable=SC2016
-RUBY_VER="$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' | tr -d '[:space:]')"
+# # Found this sed command to find the latest version of ruby from rbenv.
+# # Shellcheck does not like the $ inside the single quotes. I'm not a sed expert
+# # and not sure what to do to resolve the check. Ignoring for now as it works.
+# #
+# # shellcheck disable=SC2016
+# RUBY_VER="$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' | tr -d '[:space:]')"
 
-rbenv install "$RUBY_VER"
-rbenv global "$RUBY_VER"
+# rbenv install "$RUBY_VER"
+# rbenv global "$RUBY_VER"
 
-# Initialize Ruby environment so gems are installed in the correct location.
+# # Initialize Ruby environment so gems are installed in the correct location.
 
-echo
-echo Initializing rbenv...
-eval "$(/usr/local/bin/rbenv init -)"
-echo
-echo Installing compass
+# echo
+# echo Initializing rbenv...
+# eval "$(/usr/local/bin/rbenv init -)"
+# echo
+# echo Installing compass
 
-gem install compass
-rbenv rehash
+# gem install compass
+# rbenv rehash
 
 
 # Initialize nvm environment
@@ -254,9 +254,9 @@ pip install --upgrade --no-use-wheel pip setuptools
 pip install virtualenv
 pip install virtualenvwrapper
 
-echo
-echo Initialize mysql
-mysql.server start
+#echo
+#echo Initialize mysql
+#mysql.server start
 
 # mysql_secure_installation
 # TODO Ask for this upfront.
