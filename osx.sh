@@ -16,7 +16,7 @@ sidebarlists_device_visibility()
 
   # shellcheck disable=SC2039
   for (( i=0; i<=count; i++ )); do
-    n="$(/usr/libexec/PlistBuddy -c "Print :systemitems:VolumesList:$i:Name" ~/Library/Preferences/com.apple.sidebarlists.plist)"
+    n="$(/usr/libexec/PlistBuddy -c "Print :systemitems:VolumesList:$i:Name" ~/Library/Preferences/com.apple.sidebarlists.plist 2>/dev/null)"
 
     if [[ $name =~ $n ]]; then
       /usr/libexec/PlistBuddy -c "Set :systemitems:VolumesList:$i:Visibility $value" ~/Library/Preferences/com.apple.sidebarlists.plist
@@ -137,6 +137,7 @@ sidebarlists_device_visibility "Network" "AlwaysVisible"
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
+# Opens new Finder window to $HOME
 defaults write com.apple.finder NewWindowTarget PfHm
 
 # Configuring the favorites.
