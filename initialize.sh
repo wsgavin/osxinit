@@ -17,7 +17,7 @@ unset git_email_entered
 unset regex_email
 
 
-echo<<EOF
+echo "
 
                       .__       .__  __
    ____  _________  __|__| ____ |__|/  |_
@@ -34,9 +34,9 @@ NO WARRANTY. Use at your own risk. **
 The following script will install and configure an OS X system. configurations
 and installations are purely opionionated.
 
-Many thanks to https://mths.be/dotfiles
+Many thanks to https://mths.be/dotfiles"
 
-EOF
+
 
 
 git_email="$(/usr/libexec/PlistBuddy -c "Print" \
@@ -153,7 +153,21 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
 
+echo
+echo "Adding homebrew version of bash to /etc/shells..."
 
+# TODO: sudo keep-alive not working...
+if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
+  echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+#   echo "$sudo_password" | echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+# expect<<EOF
+#   set timeout 2
+#   spawn echo \"/usr/local/bin/bash\" | sudo tee -a /etc/shells
+#   expect "Password:"
+#   send "$sudo_password\r"
+#   expect eof
+# EOF
+fi
 
 
 
@@ -192,21 +206,7 @@ brew tap homebrew/homebrew-php
 brew install bash
 brew install bash-completion2
 
-echo
-echo "Adding homebrew version of bash to /etc/shells..."
 
-# TODO: sudo keep-alive not working...
-if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
-  echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-#   echo "$sudo_password" | echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-# expect<<EOF
-#   set timeout 2
-#   spawn echo \"/usr/local/bin/bash\" | sudo tee -a /etc/shells
-#   expect "Password:"
-#   send "$sudo_password\r"
-#   expect eof
-# EOF
-fi
 
 echo
 echo "Setting user shell to /usr/local/bin/bash..."
