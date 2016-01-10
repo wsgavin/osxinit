@@ -17,6 +17,28 @@ unset git_email_entered
 unset regex_email
 
 
+echo<<EOF
+
+                      .__       .__  __
+   ____  _________  __|__| ____ |__|/  |_
+  /  _ \/  ___/\  \/  /  |/    \|  \   __\
+ (  <_> )___ \  >    <|  |   |  \  ||  |
+  \____/____  >/__/\_ \__|___|  /__||__|
+            \/       \/       \/
+
+
+** The osxinit repository and it's content are provided "as is" with
+NO WARRANTY. Use at your own risk. **
+
+
+The following script will install and configure an OS X system. configurations
+and installations are purely opionionated.
+
+Many thanks to https://mths.be/dotfiles
+
+EOF
+
+
 git_email="$(/usr/libexec/PlistBuddy -c "Print" \
   ~/Library/Preferences/com.apple.ids.service.com.apple.madrid.plist | \
   grep LoginAs | sed 's/.*LoginAs = //' 2>/dev/null)"
@@ -156,7 +178,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Install Homebrew http://brew.sh
 
 ruby -e "$(curl \
-  -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
+  </dev/null
 
 brew update
 brew upgrade
@@ -166,21 +189,13 @@ brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap homebrew/homebrew-php
 
-brew install coreutils
-ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-
-brew install moreutils
-brew install findutils --with-default-names
-brew install gnu-sed --with-default-names
-brew install ack
-brew install homebrew/dupes/grep --with-default-names
-
 brew install bash
 brew install bash-completion2
 
 echo
 echo "Adding homebrew version of bash to /etc/shells..."
 
+# TODO: sudo keep-alive not working...
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
   echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
 #   echo "$sudo_password" | echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
@@ -204,6 +219,15 @@ expect eof
 EOF
 
 echo "done."
+
+brew install coreutils
+ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
+brew install moreutils
+brew install findutils --with-default-names
+brew install gnu-sed --with-default-names
+brew install ack
+brew install homebrew/dupes/grep --with-default-names
 
 brew install git
 
@@ -265,14 +289,21 @@ export NVM_DIR=~/.nvm
 # shellcheck source=/dev/null
 source "$(brew --prefix nvm)/nvm.sh"
 
+echo "done."
+
 # Installing nodejs with nvm
 
 echo
 echo "Installing nodejs..."
 
 nvm install node
+
+echo "Aliasing node..."
 nvm alias default node
+echo "Updating npm..."
 npm update --global
+
+echo "done."
 
 # Install node modules.
 
