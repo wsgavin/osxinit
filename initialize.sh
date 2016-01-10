@@ -20,7 +20,7 @@ unset regex_email
 . "init/input.sh"
 . "init/exports.sh"
 . "init/sudo_keep_alive.sh"
-. "init/bash_init/sh"
+. "init/bash_init.sh"
 . "init/homebrew.sh"
 
 # TODO do I need this?
