@@ -21,18 +21,18 @@ echo "
 
                       .__       .__  __
    ____  _________  __|__| ____ |__|/  |_
-  /  _ \/  ___/\  \/  /  |/    \|  \   __\
+  /  _ \/  ___/\  \/  /  |/    \|  \   __\\
  (  <_> )___ \  >    <|  |   |  \  ||  |
   \____/____  >/__/\_ \__|___|  /__||__|
             \/       \/       \/
 
 
-** The osxinit repository and it's content are provided "as is" with
-NO WARRANTY. Use at your own risk. **
+** The osxinit repository and it's content are provided "as is" with NO
+WARRANTY. Use at your own risk. **
 
 
 The following script will install and configure an OS X system. configurations
-and installations are purely opionionated.
+and installations are purely opinionated.
 
 Many thanks to https://mths.be/dotfiles"
 
@@ -149,14 +149,15 @@ echo "$sudo_password" | sudo -Sv
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-
-
-
+# TODO
+#
+# Added this part here because it seems that something after this point resets
+# the sudo timeout "I think."
+#
 
 echo
 echo "Adding homebrew version of bash to /etc/shells..."
 
-# TODO: sudo keep-alive not working...
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
   echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
 #   echo "$sudo_password" | echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
@@ -190,6 +191,9 @@ fi
 
 
 # Install Homebrew http://brew.sh
+#
+# Redirecting STDIN to /dev/null so one does not have to press Return to
+# continue.
 
 ruby -e "$(curl \
   -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
@@ -206,7 +210,9 @@ brew tap homebrew/homebrew-php
 brew install bash
 brew install bash-completion2
 
-
+# FIXME Test alternatives to expect.
+#
+# Account password required here vs. sudo. Reason expect is used.
 
 echo
 echo "Setting user shell to /usr/local/bin/bash..."
@@ -283,7 +289,7 @@ brew install nvm
 echo
 echo "Initializing nvm..."
 
-mkdir -p ~/.nvm # TODO add test for directory
+mkdir -p ~/.nvm
 cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
 export NVM_DIR=~/.nvm
 # shellcheck source=/dev/null
@@ -298,9 +304,9 @@ echo "Installing nodejs..."
 
 nvm install node
 
-echo "Aliasing node..."
-nvm alias default node
-echo "Updating npm..."
+echo "$PATH"
+
+nvm alias default node 2>&1
 npm update --global
 
 echo "done."
