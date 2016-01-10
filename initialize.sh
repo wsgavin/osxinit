@@ -7,6 +7,8 @@
 
 set -e
 
+# Variables set throughout the script(s).
+
 unset account_password
 unset sudo_password
 unset mysql_root_password
@@ -16,32 +18,20 @@ unset git_email
 unset git_email_entered
 unset regex_email
 
-
-
+# A set of scripts to prepare for initialization.
 
 . "init/banner.sh"
 . "init/input.sh"
 . "init/exports.sh"
 . "init/sudo_keep_alive.sh"
-
-
-
-
-# # Ask for the administrator password upfront.
-# echo "$sudo_password" | sudo -Sv
-
-# # Keep-alive: update existing `sudo` time stamp until the script has finished.
-# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-
-
-
 . "init/bash_init.sh"
+
+# Now we get brewing.
+#
+# If the install was one line or two I did not create a separate install file
+# for it in the init directory.
+
 . "init/homebrew.sh"
-
-# TODO do I need this?
-brew tap homebrew/versions
-
 . "init/bash.sh"
 
 brew install coreutils
@@ -74,23 +64,23 @@ brew install homebrew/dupes/grep --with-default-names
 brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
 
-brew cask install adobe-reader
-brew cask install arduino
-brew cask install cleanmymac
-brew cask install dropbox
+#brew cask install adobe-reader
+#brew cask install arduino
+#brew cask install cleanmymac
+#brew cask install dropbox
 brew cask install google-chrome
-brew cask install handbrake
+#brew cask install handbrake
 brew cask install java
 brew cask install java7
-brew cask install makemkv
-brew cask install parallels-desktop
-brew cask install real-vnc
-brew cask install silverlight
+#brew cask install makemkv
+#brew cask install parallels-desktop
+#brew cask install real-vnc
+#brew cask install silverlight
 brew cask install spotify
 brew cask install sublime-text3
-brew cask install the-unarchiver
-brew cask install transmission
-brew cask install vlc
+#brew cask install the-unarchiver
+#brew cask install transmission
+#brew cask install vlc
 brew cask install sophos-anti-virus-home-edition
 sudo chown -R "$(whoami)":admin /usr/local/bin
 sudo chown -R "$(whoami)":admin /usr/local/share
@@ -103,6 +93,8 @@ brew cask install malwarebytes-anti-malware
 #brew cask install minecraft
 #brew cask install skype
 #brew cask install snagit
+
+# Installing java here as they are part of casks.
 
 . "init/java.sh"
 
