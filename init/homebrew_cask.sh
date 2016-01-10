@@ -8,6 +8,5 @@
 #sudo chown -R warren:staff /opt/homebrew-cask/
 
 brew tap caskroom/cask
-
-#brew tap caskroom/versions
+brew tap caskroom/versions
 #brew install caskroom/cask/brew-cask

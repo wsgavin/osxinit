@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 brew install bash
 brew install bash-completion2
 
@@ -34,3 +36,5 @@ expect eof
 EOF
 
 echo "done."
+
+set -e
