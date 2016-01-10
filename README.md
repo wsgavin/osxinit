@@ -186,4 +186,8 @@ I also found this in the homebrew install... I bet this is it.
 at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 ```
 
+## `nvm install node`
+
+When set -e is set my script will exit as `nvm install node` seems to exit with something other than 0.  Need to investigate.
+
 

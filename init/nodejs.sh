@@ -21,9 +21,9 @@ echo
 echo "Installing nodejs..."
 
 nvm install node
-# FIXME Something is happening where after the install the script just stops...
-#nvm alias default node
-#npm update --global
+# FIXME if set -e is set, script exists.
+nvm alias default node
+npm update --global
 
 echo "done."
 
