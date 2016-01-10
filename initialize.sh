@@ -21,7 +21,7 @@ cat <<EOF
 
                       .__       .__  __
    ____  _________  __|__| ____ |__|/  |_
-  /  _ \/  ___/\  \/  /  |/    \|  \   __\
+  /  _ \/  ___/\  \/  /  |/    \|  \   __\\
  (  <_> )___ \  >    <|  |   |  \  ||  |
   \____/____  >/__/\_ \__|___|  /__||__|
             \/       \/       \/
@@ -53,6 +53,7 @@ regex_email="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 stty -echo
 echo
 echo "Password entered will be used when required. Can be changed lager."
+echo
 printf "Enter password: "
 read -r sudo_password
 account_password=sudo_password
@@ -336,23 +337,7 @@ rbenv rehash
 echo "done."
 
 
-brew install jenv
 
-
-echo
-echo "Initializing jenv..."
-
-eval "$(jenv init -)"
-
-# Loops through all the Java installs and adds them to jenv.
-for f in /Library/Java/JavaVirtualMachines/*
-do
-    jenv add "$f/Contents/Home"
-done
-
-jenv rehash
-
-echo "done."
 
 
 brew install ctags
@@ -448,10 +433,13 @@ brew cask install malwarebytes-anti-malware
 #brew cask install skype
 #brew cask install snagit
 
-brew cleanup
-brew cask cleanup
+
+#####
+# Installing JAVA & Utilities
+#####
 
 # Downloading Apple's version of Java.
+
 echo
 echo "Installing Apple's version of Java."
 wget -O ~/Downloads/javaforosx.dmg \
@@ -460,6 +448,32 @@ hdiutil attach ~/Downloads/javaforosx.dmg
 sudo installer -package /Volumes/Java\ for\ OS\ X\ 2015-001/JavaForOSX.pkg -target /
 hdiutil detach /Volumes/Java\ for\ OS\ X\ 2015-001
 rm "$HOME/Downloads/javaforosx.dmg"
+
+brew cask install java
+brew cask install java7
+brew install jenv
+
+echo
+echo "Initializing jenv..."
+
+eval "$(jenv init -)"
+
+# Loops through all the Java installs and adds them to jenv.
+for f in /Library/Java/JavaVirtualMachines/*
+do
+    jenv add "$f/Contents/Home"
+done
+
+jenv rehash
+
+echo "done."
+
+
+
+brew cleanup
+brew cask cleanup
+
+
 
 
 
