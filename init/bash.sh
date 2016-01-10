@@ -39,4 +39,4 @@ EOF
 
 echo "done."
 
-set -e
+set +x
