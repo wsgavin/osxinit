@@ -25,22 +25,16 @@ git_fullname="$(osascript -e 'long user name of (system info)')"
 
 regex_email="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 
-# Grabbing a few passwords to automate the installation.
+# Grabbing password for future use where required.
 
 stty -echo
 echo
-printf "Enter account password: "
-read -r account_password
-echo
-printf "Enter admin (sudo) password: "
+echo "Password entered will be used when required. Can be changed lager."
+printf "Enter password: "
 read -r sudo_password
-echo
-printf "Enter desited mysql root password: "
-read -r mysql_root_password
+account_password=sudo_password
+mysql_root_password=sudo_password
 stty echo
-
-# git_email_entered=""
-# get_fullname_entered=""
 
 
 echo
@@ -121,22 +115,48 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/php56/bin:$PATH"
 
+
+
+
+
+
+
+# Ask for the administrator password upfront.
+echo "$sudo_password" | sudo -Sv
+
+# Keep-alive: update existing `sudo` time stamp until the script has finished.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+
+
+
+
+
+
+
 # Install homebrew
 #
 # This is as automated as I could get.
 
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install \
-  > /tmp/install.hb.rb
+# curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install \
+#   > /tmp/install.hb.rb
 
-expect<<EOF
-set timeout 30
-spawn ruby /tmp/install.hb.rb
-expect "Press RETURN to continue or any other key to abort"
-send "\r"
-expect "Password:"
-send "$sudo_password\r"
-expect "Run `brew help` to get started"
-EOF
+# expect<<EOF
+# set timeout 30
+# spawn ruby /tmp/install.hb.rb
+# expect "Press RETURN to continue or any other key to abort"
+# send "\r"
+# expect "Password:"
+# send "$sudo_password\r"
+# expect "Run `brew help` to get started"
+# EOF
+
+
+# Install Homebrew http://brew.sh
+
+ruby -e "$(curl \
+  -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
 brew upgrade
@@ -162,8 +182,15 @@ echo
 echo "Adding homebrew version of bash to /etc/shells..."
 
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
-  # TODO Not sure why I had to do this but it appears to work.
   echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+#   echo "$sudo_password" | echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+# expect<<EOF
+#   set timeout 2
+#   spawn echo \"/usr/local/bin/bash\" | sudo tee -a /etc/shells
+#   expect "Password:"
+#   send "$sudo_password\r"
+#   expect eof
+# EOF
 fi
 
 echo
@@ -429,8 +456,6 @@ echo "done."
 
 echo
 echo "Initialization complete."
-echo
-echo "Run setup.sh next..."
 echo
 
 unset account_password
