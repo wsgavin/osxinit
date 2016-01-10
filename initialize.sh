@@ -33,23 +33,13 @@ sudo_ok() {
 
 . "init/banner.sh"
 
-sudo_ok
-
 . "init/input.sh"
-
-sudo_ok
 
 . "init/exports.sh"
 
-sudo_ok
-
 . "init/sudo_keep_alive.sh"
 
-sudo_ok
-
 . "init/bash_init.sh"
-
-sudo_ok
 
 # Now we get brewing.
 #
@@ -57,6 +47,13 @@ sudo_ok
 # for it in the init directory.
 
 . "init/homebrew.sh"
+
+# Running again as homebrew invalidate sudo
+#
+# Invalidate sudo timestamp before exiting
+# at_exit { Kernel.system "/usr/bin/sudo", "-k" }
+
+. "init/sudo_keep_alive.sh"
 
 sudo_ok
 
