@@ -28,6 +28,8 @@ fi
 echo
 echo "Setting user shell to /usr/local/bin/bash..."
 
+echo "$account_password"
+
 expect<<EOF
 spawn chsh -s /usr/local/bin/bash
 expect "Password"

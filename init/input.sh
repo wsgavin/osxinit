@@ -16,10 +16,16 @@ echo "Password entered will be used when required. Can be changed lager."
 echo
 printf "Enter password: "
 read -r sudo_password
-account_password=sudo_password
-mysql_root_password=sudo_password
 stty echo
 
+
+account_password=sudo_password
+mysql_root_password=sudo_password
+
+
+export sudo_password
+export account_password
+export mysql_root_password
 
 echo
 echo "Configuring git settings..."
