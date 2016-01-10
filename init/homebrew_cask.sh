@@ -1,11 +1,11 @@
 #!/bin/sh
 
 
-sudo mkdir -p /opt
+echo "$sudo_password" | sudo -S mkdir -p /opt
 sudo chmod 0775 /opt
 
 sudo mkdir -p /opt/homebrew-cask/Caskroom
-chown -R warren:staff /opt/homebrew-cask/
+sudo chown -R warren:staff /opt/homebrew-cask/
 
 brew tap caskroom/cask
 

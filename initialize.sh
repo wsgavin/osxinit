@@ -18,17 +18,38 @@ unset git_email
 unset git_email_entered
 unset regex_email
 
+sudo_ok() {
+
+  printf %s "$(date) "
+
+  if  sudo -n true; then
+    echo "sudo good"
+  fi
+
+  printf "\n"
+}
+
 # A set of scripts to prepare for initialization.
 
 . "init/banner.sh"
 
+sudo_ok
+
 . "init/input.sh"
+
+sudo_ok
 
 . "init/exports.sh"
 
+sudo_ok
+
 . "init/sudo_keep_alive.sh"
 
+sudo_ok
+
 . "init/bash_init.sh"
+
+sudo_ok
 
 # Now we get brewing.
 #
@@ -37,25 +58,45 @@ unset regex_email
 
 . "init/homebrew.sh"
 
+sudo_ok
+
 . "init/bash.sh"
+
+sudo_ok
 
 . "init/git.sh"
 
+sudo_ok
+
 . "init/nodejs.sh"
+
+sudo_ok
 
 . "init/vim.sh"
 
+sudo_ok
+
 . "init/ruby.sh"
+
+sudo_ok
 
 . "init/python.sh"
 
+sudo_ok
+
 . "init/mysql.sh"
 
+sudo_ok
+
 . "init/php.sh"
+
+sudo_ok
 
 # This file has all the simple brews...
 
 . "init/brew_others.sh"
+
+sudo_ok
 
 # Now on to casks...
 
@@ -63,11 +104,17 @@ unset regex_email
 
 . "init/homebrew_cask.sh"
 
+sudo_ok
+
 . "init/brew_cask_others.sh"
+
+sudo_ok
 
 # Installing java here as they are part of casks.
 
 . "init/java.sh"
+
+sudo_ok
 
 brew cleanup
 brew cask cleanup

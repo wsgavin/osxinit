@@ -175,5 +175,9 @@ Error: Download failed on Cask 'arduino' with message: Download failed: https://
 
 I've not found a good way to "retry" the download or wait in this kind of situation. Still looking for a simple solution.
 
+## sudo Keep Alive
+
+While I recognize that the sudo keep-alive code seems to work for a bit, at some point it fails. This is likely due to something I am doing or that another install script is doing to negate the keep-alive. So, for the most part, I will try to do something like `echo "$password" | sudo -S <cmd>`
+
 
 
