@@ -160,35 +160,7 @@ echo "Adding homebrew version of bash to /etc/shells..."
 
 if ! grep -Fxq "/usr/local/bin/bash" /etc/shells ; then
   echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-#   echo "$sudo_password" | echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-# expect<<EOF
-#   set timeout 2
-#   spawn echo \"/usr/local/bin/bash\" | sudo tee -a /etc/shells
-#   expect "Password:"
-#   send "$sudo_password\r"
-#   expect eof
-# EOF
 fi
-
-
-
-# Install homebrew
-#
-# This is as automated as I could get.
-
-# curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install \
-#   > /tmp/install.hb.rb
-
-# expect<<EOF
-# set timeout 30
-# spawn ruby /tmp/install.hb.rb
-# expect "Press RETURN to continue or any other key to abort"
-# send "\r"
-# expect "Password:"
-# send "$sudo_password\r"
-# expect "Run `brew help` to get started"
-# EOF
-
 
 # Install Homebrew http://brew.sh
 #
@@ -210,7 +182,7 @@ brew tap homebrew/homebrew-php
 brew install bash
 brew install bash-completion2
 
-# FIXME Test alternatives to expect.
+# TODO Test alternatives to expect.
 #
 # Account password required here vs. sudo. Reason expect is used.
 
@@ -234,6 +206,10 @@ brew install findutils --with-default-names
 brew install gnu-sed --with-default-names
 brew install ack
 brew install homebrew/dupes/grep --with-default-names
+brew install tmux
+brew install ffmpeg --with-faac
+brew install nmap
+brew install wget
 
 brew install git
 
@@ -252,7 +228,49 @@ git config --global format.pretty "%h - %an, %ar : %s"
 
 echo "done."
 
-brew install wget
+
+brew install nvm
+
+
+echo
+echo "Initializing nvm..."
+
+mkdir -p ~/.nvm
+cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
+export NVM_DIR=~/.nvm
+# shellcheck source=/dev/null
+source "$(brew --prefix nvm)/nvm.sh"
+
+echo "done."
+
+# Installing nodejs with nvm
+
+echo
+echo "Installing nodejs..."
+
+nvm install node
+nvm alias default node
+npm update --global
+
+echo "done."
+
+# Install node modules.
+
+echo
+echo Installing node modules...
+
+npm install --global \
+  yo \
+  grunt-cli \
+  bower \
+
+npm cache clean
+
+echo "done."
+
+
+
+
 brew install vim --override-system-vi
 
 echo
@@ -279,51 +297,8 @@ git clone git://github.com/altercation/vim-colors-solarized.git \
 echo
 
 
-brew install tmux
-
-brew install ffmpeg --with-faac
-brew install nmap
-brew install nvm
 
 
-echo
-echo "Initializing nvm..."
-
-mkdir -p ~/.nvm
-cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
-export NVM_DIR=~/.nvm
-# shellcheck source=/dev/null
-source "$(brew --prefix nvm)/nvm.sh"
-
-echo "done."
-
-# Installing nodejs with nvm
-
-echo
-echo "Installing nodejs..."
-
-nvm install node
-
-echo "$PATH"
-
-nvm alias default node 2>&1
-npm update --global
-
-echo "done."
-
-# Install node modules.
-
-echo
-echo Installing node modules...
-
-npm install --global \
-  yo \
-  grunt-cli \
-  bower \
-
-npm cache clean
-
-echo "done."
 
 
 
