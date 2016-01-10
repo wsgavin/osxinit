@@ -12,3 +12,5 @@ ruby -e "$(curl \
 brew update
 brew upgrade
 brew doctor
+
+brew tap homebrew/versions

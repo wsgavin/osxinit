@@ -22,15 +22,16 @@ unset regex_email
 . "init/banner.sh"
 . "init/input.sh"
 . "init/exports.sh"
+. "init/sudo_keep_alive.sh"
 
 
 
 
-# Ask for the administrator password upfront.
-echo "$sudo_password" | sudo -Sv
+# # Ask for the administrator password upfront.
+# echo "$sudo_password" | sudo -Sv
 
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# # Keep-alive: update existing `sudo` time stamp until the script has finished.
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
 
@@ -39,7 +40,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 . "init/homebrew.sh"
 
 # TODO do I need this?
-#brew tap homebrew/versions
+brew tap homebrew/versions
 
 . "init/bash.sh"
 
