@@ -21,11 +21,6 @@ stty echo
 account_password="$sudo_password"
 mysql_root_password="$sudo_password"
 
-
-# export sudo_password
-# export account_password
-# export mysql_root_password
-
 echo
 echo "Configuring git settings..."
 echo

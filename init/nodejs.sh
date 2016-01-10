@@ -4,7 +4,6 @@ set -x
 
 brew install nvm
 
-
 echo
 echo "Initializing nvm..."
 
@@ -12,7 +11,7 @@ mkdir -p ~/.nvm
 cp "$(brew --prefix nvm)/nvm-exec" ~/.nvm/
 export NVM_DIR=~/.nvm
 # shellcheck source=/dev/null
-source "$(brew --prefix nvm)/nvm.sh"
+. "$(brew --prefix nvm)/nvm.sh"
 
 echo "done."
 

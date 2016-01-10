@@ -1,18 +1,7 @@
 #!/bin/sh
 
-set -x
-
 brew install bash
 brew install bash-completion2
-
-
-# TODO
-#
-# I Think this is fixed...
-#
-# Added this part here because it seems that something after this point resets
-# the sudo timeout "I think."
-#
 
 echo
 echo "Adding homebrew version of bash to /etc/shells..."
@@ -28,8 +17,6 @@ fi
 echo
 echo "Setting user shell to /usr/local/bin/bash..."
 
-echo "$account_password"
-
 expect<<EOF
 spawn chsh -s /usr/local/bin/bash
 expect "Password"
@@ -38,5 +25,3 @@ expect eof
 EOF
 
 echo "done."
-
-set +x
