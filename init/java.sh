@@ -11,6 +11,8 @@ sudo installer -package /Volumes/Java\ for\ OS\ X\ 2015-001/JavaForOSX.pkg -targ
 hdiutil detach /Volumes/Java\ for\ OS\ X\ 2015-001
 rm "$HOME/Downloads/javaforosx.dmg"
 
+# Installs the latest java versions
+
 brew cask install java
 brew cask install java7
 brew install jenv
