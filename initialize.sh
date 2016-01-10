@@ -5,7 +5,7 @@
 # to utilize the new installed application.
 #
 
-set -e
+set -x
 
 # Variables set throughout the script(s).
 
@@ -58,6 +58,8 @@ unset regex_email
 . "init/brew_others.sh"
 
 # Now on to casks...
+
+# TODO May no longer need to install cask separately.
 
 . "init/homebrew_cask.sh"
 
