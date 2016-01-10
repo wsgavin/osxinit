@@ -59,6 +59,8 @@ sudo_ok
 
 . "init/bash.sh"
 
+. "init/sudo_keep_alive.sh"
+
 sudo_ok
 
 . "init/git.sh"
