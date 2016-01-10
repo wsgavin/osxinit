@@ -17,7 +17,7 @@ There's an order to the scripts.
 
 ## `check.sh`
 
-`check.sh` essentially validates that you have some prerequisites before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through these any installs if you do not meet the requirements already. Otherwise the script will let you know all is good.
+`check.sh` essentially validates that you have some prerequisites before you start. Specifically we are looking for `git` and an Internet connection. The script will instruct you through any installs if you do not meet the requirements already. Otherwise the script will let you know all is good.
 
 I wrote this script because I was not initially aware of the process and thought documenting how to get there was worth it. For me it's trivial now, but for the uninitiated probably worth the understanding.
 
