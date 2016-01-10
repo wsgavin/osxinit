@@ -1,4 +1,6 @@
-# OS X Setup
+# OS X Setup (osxinit)
+
+**N.B.** This material is for Mac OS X 10.11.x El Capitan.
 
 These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments. Essentially Mathias Bynens has been the major influence. His dotfile can be found here https://github.com/mathiasbynens/dotfiles.
 
