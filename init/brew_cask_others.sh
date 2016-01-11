@@ -1,29 +1,36 @@
 #!/bin/sh
 
-#brew cask install adobe-reader
-#brew cask install arduino
-#brew cask install cleanmymac
-#brew cask install dropbox
-brew cask install google-chrome
-#brew cask install handbrake
-#brew cask install makemkv
-#brew cask install parallels-desktop
-#brew cask install real-vnc
-#brew cask install silverlight
-brew cask install spotify
-brew cask install caskroom/versions/sublime-text3
-brew cask install the-unarchiver
-#brew cask install transmission
-brew cask install Caskroom/cask/vlc
-brew cask install sophos-anti-virus-home-edition
+brew install Caskroom/cask/adobe-reader # passwd
+#brew install Caskroom/cask/arduinobrew
+#brew install Caskroom/cask/cleanmymac
+#brew install Caskroom/cask/dropbox
+brew install Caskroom/cask/google-chrome
+#brew install Caskroom/cask/handbrake
+#brew install Caskroom/cask/makemkv
+#brew install Caskroom/cask/parallels-desktop
+#brew install Caskroom/cask/real-vnc
+#brew install Caskroom/cask/silverlight
+brew install Caskroom/cask/spotify
+#brew install Caskroom/cask/the-unarchiver
+#brew install Caskroom/cask/transmission
+#brew install Caskroom/cask/vlc
+
+
+#brew install Caskroom/cask/1password
+#brew install Caskroom/cask/microsoft-office
+#brew install Caskroom/cask/crashplan
+#brew install Caskroom/cask/gopro-studio
+#brew install Caskroom/cask/minecraft
+#brew install Caskroom/cask/skype
+#brew install Caskroom/cask/snagit
+
+
+brew install Caskroom/cask/sophos-anti-virus-home-edition
 sudo chown -R "$(whoami)":admin /usr/local/bin
 sudo chown -R "$(whoami)":admin /usr/local/share
-brew cask install malwarebytes-anti-malware
 
-#brew cask install 1password
-#brew cask install microsoft-office
-#brew cask install crashplan
-#brew cask install gopro-studio
-#brew cask install minecraft
-#brew cask install skype
-#brew cask install snagit
+
+brew install Caskroom/cask/malwarebytes-anti-malware
+
+
+brew cask install caskroom/versions/sublime-text3
