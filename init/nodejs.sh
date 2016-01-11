@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 brew install nvm
 
 echo
@@ -40,5 +38,3 @@ npm install --global \
 npm cache clean
 
 echo "done."
-
-set +x
