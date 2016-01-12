@@ -4,16 +4,15 @@
 
 **N.B.** NO WARRANTY USE AT YOUR OWN RISK
 
-**N.B.** This repository is still a work in progress.
+**N.B.** This repository is a work in progress.
 
-These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments. Essentially Mathias Bynens has been the major influence. His dotfile can be found here https://github.com/mathiasbynens/dotfiles.
+These are a set of scripts I've created to setup my OS X box. I've learned quite a bit from other folks dotfiles and install scripts and do my best to provide acknowledgments. Essentially Mathias Bynens has been the major influence. His dotfiles can be found here https://github.com/mathiasbynens/dotfiles.
 
 There's an order to the scripts.
 
 1. `check.sh`
 2. `initialize.sh`
-3. `setup.sh`
-4. `osx.sh`
+3. `osx.sh`
 
 ## `check.sh`
 
@@ -23,19 +22,13 @@ I wrote this script because I was not initially aware of the process and thought
 
 ## `initialize.sh`
 
-`initialize.sh` will start the base install of tools and applications. Essentially this is homebrew doing the major lifting. At this time there is only one tool I cannot install via homebrew, `gvm`.
-
-## `setup.sh`
-
-`setup.sh` is a combination of environmental setups (e.g. copying dotfiles in the home directory) as well as some additional installations. At some point I may be able to combine `initialize.sh` and `setup.sh` in one script but I've kept them separate for now.
+`initialize.sh` will start the base install of tools and applications. Essentially this is homebrew doing the major lifting. There is also a combination of environmental setups (e.g. copying dotfiles in the home directory) as well as some additional installations.
 
 ## `osx.sh`
 
 `osx.sh` sets up some OS X specifics (e.g. Terminal defaults, Dock adjustments) that I prefer.
 
 ## Let's get started...
-
-**N.B.** When running scripts you will not have to start with any `sudu` commands. They are embedded in the script when needed.
 
 To run these scripts the OS X box will need to need to meet a few requirements.
 
@@ -63,19 +56,7 @@ Once you click install you will need to agree to the license agreement. After th
 
 Once you feel you have corrected any issues run the script again. Once all the checks pass you will be greeted with a message saying "All good to go..." and will instruct you on the next steps.
 
-
-
-
-
-TODO: Install vs. Xcode and go ahead and download java.
-
-
-
-Once complete the `check.sh` script should tell you it's all good to go.
-
-TODO: Have it spit out the commands below.
-
-## OS X Initialization Files
+Once complete the `check.sh` script should tell you it's all good to go and will download osxinit for you.
 
 Let's checkout the git repository, cd into osxinit and run `initialize.sh`.
 
@@ -83,15 +64,11 @@ Let's checkout the git repository, cd into osxinit and run `initialize.sh`.
     $ cd osxinit
     $ ./initialize.sh
 
-## Java
-
-For Minecraft, the latest Java update from Apple is required. You can find the download at the following URL.
-
-https://support.apple.com/kb/DL1572?locale=en_US
-
-Follow the instructions provided on the site.
+Running this script will take some time. Go have a beer.
 
 # RESTART
+
+Just do it, not a big deal...
 
 ## TODO
 
@@ -104,9 +81,8 @@ Follow the instructions provided on the site.
 
 ### USB Installer
 
-```
-sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
-```
+    sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
+
 
 ### OS X settings
 
@@ -144,17 +120,13 @@ I wanted a solution to be able to store my SSH keys not on my local box as backu
 
 Encrypt:
 
-```
-openssl enc -in id_rsa -aes-256-cbc -pass stdin > id_rsa.enc
-```
+    openssl enc -in id_rsa -aes-256-cbc -pass stdin > id_rsa.enc
 
 You won't specifically be prompted for a password but it is expected to be captured from STDIN. Once you enter you desired password press return.
 
 Decrypt:
 
-```
-openssl enc -in id_rsa.enc -d -aes-256-cbc -pass stdin > id_rsa
-```
+    openssl enc -in id_rsa.enc -d -aes-256-cbc -pass stdin > id_rsa
 
 # Assumptions
 
@@ -166,12 +138,10 @@ openssl enc -in id_rsa.enc -d -aes-256-cbc -pass stdin > id_rsa
 
 During a brew install, sometimes the download fails. For example you may see something like this:
 
-```
-==> Downloading https://downloads.arduino.cc/arduino-1.6.7-macosx.zip
-######                                                                     8.5%
-curl: (56) SSLRead() return error -9806
-Error: Download failed on Cask 'arduino' with message: Download failed: https://downloads.arduino.cc/arduino-1.6.7-macosx.zip
-```
+    ==> Downloading https://downloads.arduino.cc/arduino-1.6.7-macosx.zip
+    ######                                                                     8.5%
+    curl: (56) SSLRead() return error -9806
+    Error: Download failed on Cask 'arduino' with message: Download failed: https://downloads.arduino.cc/arduino-1.6.7-macosx.zip
 
 I've not found a good way to "retry" the download or wait in this kind of situation. Still looking for a simple solution.
 
@@ -181,13 +151,9 @@ While I recognize that the sudo keep-alive code seems to work for a bit, at some
 
 I also found this in the homebrew install... I bet this is it.
 
-```
-# Invalidate sudo timestamp before exiting
-at_exit { Kernel.system "/usr/bin/sudo", "-k" }
-```
+    # Invalidate sudo timestamp before exiting
+    at_exit { Kernel.system "/usr/bin/sudo", "-k" }
 
 ## `nvm install node`
 
 When set -e is set my script will exit as `nvm install node` seems to exit with something other than 0.  Need to investigate.
-
-

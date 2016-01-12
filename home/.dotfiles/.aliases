@@ -74,3 +74,6 @@ alias grep='grep --color=auto'
 # Based on the new session saving El Capitan introduced, had to modify the
 # exit command not to include the GNU versions of commands.
 alias exit='PATH=/usr/bin:/bin:/usr/sbin:/sbin; exit'
+
+
+alias nmapsub="nmap -sn 192.168.15.1/24"
