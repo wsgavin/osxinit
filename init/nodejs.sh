@@ -18,10 +18,13 @@ echo "done."
 echo
 echo "Installing nodejs..."
 
-nvm install node
+nvm install node 2>&1
 # FIXME if set -e is set, script exists.
+# Possible solution for now is to redirect STDERR to STDOUT
+# e.g. nvm install node 2>&1
 nvm alias default node
-npm update --global
+# FIXME running this seems to break npm when install node 5.4.1 and npm 3.3.12
+#npm update --global
 
 echo "done."
 

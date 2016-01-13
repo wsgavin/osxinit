@@ -5,7 +5,7 @@
 # to utilize the new installed application.
 #
 
-#set -e
+set -e
 
 # Variables set throughout the script(s).
 
