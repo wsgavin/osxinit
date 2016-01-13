@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set +e
+
 brew install nvm
 
 echo
@@ -19,9 +21,9 @@ echo
 echo "Installing nodejs..."
 
 nvm install node 2>&1
-# FIXME if set -e is set, script exists.
-# Possible solution for now is to redirect STDERR to STDOUT
-# e.g. nvm install node 2>&1
+# FIXME if set -e is set, script exists. Possible solution for now is to
+# redirect STDERR to STDOUT e.g. nvm install node 2>&1 Okay, well that did not
+# work :(.
 nvm alias default node
 # FIXME running this seems to break npm when install node 5.4.1 and npm 3.3.12
 #npm update --global
@@ -41,3 +43,5 @@ npm install --global \
 npm cache clean
 
 echo "done."
+
+set -e
