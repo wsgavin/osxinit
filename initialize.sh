@@ -118,6 +118,8 @@ sudo_ok
 brew cleanup
 brew cask cleanup
 
+. "osx.sh"
+
 unset account_password
 unset sudo_password
 unset mysql_root_password
