@@ -14,6 +14,8 @@ brew install Caskroom/cask/spotify
 #brew install Caskroom/cask/the-unarchiver
 #brew install Caskroom/cask/transmission
 #brew install Caskroom/cask/vlc
+brew install Caskroom/cask/macdown
+brew install Caskroom/cask/filezilla
 
 
 #brew install Caskroom/cask/1password
