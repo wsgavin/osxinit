@@ -201,7 +201,7 @@ defaults write com.apple.dock tilesize -int 48
 #
 # TODO This was the only way I could find to do this, but there must be a
 #      better way.
-for APP in Safari Mail Contacts Calendar Notes Maps Photos \
+for APP in Mail Contacts Calendar Notes Maps Photos \
     Messages FaceTime Pages Numbers Keynote iTunes iBooks;
 do
 
