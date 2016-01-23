@@ -13,3 +13,6 @@ export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 # Adds additional php binaries.
 export PATH="/usr/local/opt/php56/bin:$PATH"
 
+# Adds MacDown commandline utility
+export PATH="/Applications/MacDown.app/Contents/SharedSupport/bin"
+
