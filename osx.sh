@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set +e
+
 #
 # TODO: Find proper regex for OS X hostname.
 #
@@ -235,3 +237,5 @@ defaults write com.apple.dock persistent-apps -array-add \
 killall cfprefsd
 killall Dock
 killAll Finder
+
+set -e
