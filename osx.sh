@@ -77,9 +77,6 @@ do
 
 done
 
-echo
-echo "Completing git personal settings..."
-
 ##
 # System
 ##
