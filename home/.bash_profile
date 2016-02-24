@@ -77,5 +77,5 @@ if [ -f "$(brew --prefix)/bin/virtualenvwrapper.sh" ]; then
   source "$(brew --prefix)/bin/virtualenvwrapper.sh"
 fi
 
-
-
+# Initialize Script Integration for iTerm
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
