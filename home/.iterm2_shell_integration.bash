@@ -79,7 +79,17 @@ if ( [ x"$TERM" != xscreen ] ); then
 
       # Set PS1 to various escape sequences, the user's preferred prompt, and more escape sequences.
       # export PS1="\[$iterm2_prompt_prefix_value\]$orig_ps1\[$(iterm2_prompt_suffix)\]"
-      export PS1="\n\[$iterm2_prompt_prefix_value\]$orig_ps1\[$(iterm2_prompt_suffix)\]"
+      # export PS1="\n\[$iterm2_prompt_prefix_value\]$orig_ps1\[$(iterm2_prompt_suffix)\]"
+   
+			# clear PS1 for now...
+      PS1=""
+
+      if [[ "${TERM_PROGRAM}" == "iTerm.app" ]]
+			then
+				PS1="\n";
+			fi
+			
+			export PS1+="\[$iterm2_prompt_prefix_value\]$orig_ps1\[$(iterm2_prompt_suffix)\]"
 
       # Save the value we just set PS1 to so if the user changes PS1 we'll know and we can update orig_ps1.
       export prev_ps1="$PS1"
