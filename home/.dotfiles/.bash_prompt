@@ -103,10 +103,13 @@ else
   hostStyle="${orange}";
 fi;
 
+# Original lines that have been commented out. Both Terminal and iTerm2 have a setting for this.
 # Set the terminal title and prompt.
 # PS1="\[\033]0;\W\007\]"; # working directory base name
-#PS1="\[${bold}\]\n"; # newline
+# PS1="\[${bold}\]\n"; # newline
 
+# Addressing shell integration w/prompts for iTerm2
+# TODO: Consider testing for iTerm rather than other terminals.
 if [[ "${TERM_PROGRAM}" == "Apple_Terminal" ]]; then
   PS1="\n"; # newline
 else
@@ -116,7 +119,14 @@ fi;
 PS1+="\[${bold}\]";
 PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${white}\] at ";
-PS1+="\[${hostStyle}\]\h"; # host
+
+# Override hostname with PROMPT_HOSTNAME
+if [[ -z "${PROMPT_HOSTNAME}" ]]; then
+  PS1+="\[${hostStyle}\]\h"; # host
+else
+  PS1+="\[${hostStyle}\]${PROMPT_HOSTNAME}"; # host
+fi;
+
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\w"; # working directory full path
 PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")"; # Git repository details
