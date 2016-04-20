@@ -31,6 +31,6 @@ pyenv local 3.5.1
 pip install --upgrade --no-use-wheel pip setuptools
 pip install virtualenvwrapper
 
-pip global 2.7.11
+pyenv global 2.7.11
 
 echo "done."
