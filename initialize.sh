@@ -11,7 +11,7 @@ set -e
 
 unset account_password
 unset sudo_password
-unset mysql_root_password
+#unset mysql_root_password
 unset git_fullname
 unset git_fullname_entered
 unset git_email
@@ -81,9 +81,9 @@ sudo_ok
 
 . "init/python.sh"
 
-sudo_ok
-
-. "init/mysql.sh"
+#sudo_ok
+#
+#. "init/mysql.sh"
 
 sudo_ok
 
@@ -122,7 +122,7 @@ brew cask cleanup
 
 unset account_password
 unset sudo_password
-unset mysql_root_password
+#unset mysql_root_password
 unset git_fullname
 unset git_fullname_entered
 unset git_email

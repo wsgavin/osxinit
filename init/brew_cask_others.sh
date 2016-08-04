@@ -1,39 +1,44 @@
 #!/bin/sh
 
-brew install Caskroom/cask/adobe-reader # passwd
-#brew install Caskroom/cask/arduinobrew
-#brew install Caskroom/cask/cleanmymac
-#brew install Caskroom/cask/dropbox
-brew install Caskroom/cask/google-chrome
-#brew install Caskroom/cask/handbrake
-#brew install Caskroom/cask/makemkv
-#brew install Caskroom/cask/parallels-desktop
-#brew install Caskroom/cask/real-vnc
-#brew install Caskroom/cask/silverlight
-brew install Caskroom/cask/spotify
-#brew install Caskroom/cask/the-unarchiver
-#brew install Caskroom/cask/transmission
-#brew install Caskroom/cask/vlc
-brew install Caskroom/cask/macdown
-brew install Caskroom/cask/filezilla
-brew install Caskroom/cask/iterm2-beta
+
+brew cask install adobe-reader # passwd
+brew cask install atex
+brew cask install chirp-daily
+brew cask install cleanmymac
+brew cask install docker
+brew cask install dropbox
+brew cask install filezilla
+brew cask install google-chrome
+brew cask install iterm2
+brew cask install macdown
+brew cask install malwarebytes-anti-malware
+#brew cask install microsoft-office
+brew cask install minecraft
+brew cask install opendns-updater
+brew cask install parallels-desktop
+#brew cask install skype
+brew cask install silverlight
+#brew cask install snagit
+brew cask install spotify
+brew cask install sublime-text
+brew cask install the-unarchiver
+brew cask install vlc
 
 
-#brew install Caskroom/cask/1password
-#brew install Caskroom/cask/microsoft-office
-#brew install Caskroom/cask/crashplan
-#brew install Caskroom/cask/gopro-studio
-#brew install Caskroom/cask/minecraft
-#brew install Caskroom/cask/skype
-#brew install Caskroom/cask/snagit
+# No longer supported, manual install
+#brew install Caskroom/cask/sophos-anti-virus-home-edition
+#sudo chown -R "$(whoami)":admin /usr/local/bin
+#sudo chown -R "$(whoami)":admin /usr/local/share
 
+# Manual Installs
+#
+# Microsoft Remote Desktop Beta
+# Microsoft Skype for Business Beta
+# Microsoft Sype
+# Sophos
 
-brew install Caskroom/cask/sophos-anti-virus-home-edition
-sudo chown -R "$(whoami)":admin /usr/local/bin
-sudo chown -R "$(whoami)":admin /usr/local/share
-
-
-brew install Caskroom/cask/malwarebytes-anti-malware
-
-
-brew cask install caskroom/versions/sublime-text3
+# App Store
+#
+# Gemini 2
+# Magnet
+# Twitter
