@@ -68,17 +68,13 @@ alias uall='umac; ubrew; unpm; ugem'
 # epoch
 alias epoch='date +%s'
 
+# grep
 alias grep='grep --color=auto'
 
-# exit
-# Based on the new session saving El Capitan introduced, had to modify the
-# exit command not to include the GNU versions of commands.
-alias exit='PATH=/usr/bin:/bin:/usr/sbin:/sbin; exit'
 
-
+# IP scan of local network
 alias nmapsub="nmap -sn 192.168.15.1/24"
 
-
-
 # git
+
 alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)-%an%C(reset)%C(bold yellow)%d%C(reset)'"

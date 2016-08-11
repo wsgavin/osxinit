@@ -4,7 +4,7 @@
 #
 
 #for DOTFILE in `find $HOME/.dotfiles -type f`
-for DOTFILE in ~/.dotfiles/.{path,bash_prompt,exports,aliases,functions,extra};
+for DOTFILE in ~/.dotfiles/.{path,bash_prompt,exports,aliases,functions,docker,extra};
 do
   # shellcheck source=/dev/null
   [ -f "${DOTFILE}" ] && source "${DOTFILE}"
