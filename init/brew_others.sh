@@ -14,6 +14,7 @@ brew install wget
 brew install ctags
 brew install shellcheck
 brew install brew-rmtree
+brew install pandoc
 
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep --with-default-names

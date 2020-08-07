@@ -157,3 +157,7 @@ I also found this in the homebrew install... I bet this is it.
 ## `nvm install node`
 
 When set -e is set my script will exit as `nvm install node` seems to exit with something other than 0.  Need to investigate.
+
+
+
+> TODO: Add duti and file association for markdown/MacDown

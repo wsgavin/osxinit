@@ -50,7 +50,7 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 #####
 
 # Get Homebrew updates
-alias ubrew='brew update; brew doctor; brew upgrade; brew cask update; brew cask cleanup; brew cleanup'
+alias ubrew='brew update; brew doctor; brew upgrade; brew cask cleanup; brew cleanup'
 
 # Get OS X Software updates
 alias umac='sudo softwareupdate -i -a'
@@ -78,3 +78,14 @@ alias nmapsub="nmap -sn 192.168.15.1/24"
 # git
 
 alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)-%an%C(reset)%C(bold yellow)%d%C(reset)'"
+
+
+
+
+# Aliases for ~/bin
+
+alias decrypt='~/bin/decrypt.sh'
+alias encrypt='~/bin/encrypt.sh'
+alias gto='~/bin/git-open.sh'
+alias brew-deps='~/bin/brew-deps.sh'
+alias speed-test='~/bin/speed-test.sh'
